@@ -6,6 +6,7 @@ final class EventTableViewCell: UITableViewCell {
         label.text = "\(event.type)"
         descriptionLabel.text = "\(event.actor.login)/\(event.repo.name)"
         Nuke.loadImage(with: event.actor.avatarUrl, into: profileImage)
+        profileImage.layer.cornerRadius = profileImage.frame.size.width * 0.5
 //        Nuke.loadImage(with: event.actor.avatarUrl, options: options, into: profileImage)
     }
 
