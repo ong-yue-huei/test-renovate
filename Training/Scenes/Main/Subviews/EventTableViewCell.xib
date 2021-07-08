@@ -17,13 +17,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOh-MB-ou1">
-                        <rect key="frame" x="76" y="14" width="289" height="22"/>
+                        <rect key="frame" x="76" y="14" width="39.5" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" name="OnSurface"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZd-36-cIs">
-                        <rect key="frame" x="76" y="32" width="289" height="22"/>
+                        <rect key="frame" x="76" y="32" width="35.5" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="AccentVariant"/>
                         <nil key="highlightedColor"/>
@@ -40,9 +40,9 @@
                 <color key="backgroundColor" name="Surface"/>
                 <constraints>
                     <constraint firstItem="22f-HB-7Dc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Ke5-JS-NkI"/>
-                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="mOh-MB-ou1" secondAttribute="trailing" constant="10" id="LiQ-8E-Cx5"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mOh-MB-ou1" secondAttribute="trailing" constant="20" id="LiQ-8E-Cx5"/>
                     <constraint firstItem="KZd-36-cIs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="O1J-IU-h65"/>
-                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="KZd-36-cIs" secondAttribute="trailing" constant="10" id="cjd-a0-4Tm"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KZd-36-cIs" secondAttribute="trailing" constant="20" id="cjd-a0-4Tm"/>
                     <constraint firstItem="mOh-MB-ou1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="76" id="djj-Zz-6eI"/>
                     <constraint firstAttribute="bottom" secondItem="22f-HB-7Dc" secondAttribute="bottom" constant="12" id="g9r-xN-E9i"/>
                     <constraint firstAttribute="bottom" secondItem="KZd-36-cIs" secondAttribute="bottom" constant="10" id="ix3-Tf-BqO"/>
