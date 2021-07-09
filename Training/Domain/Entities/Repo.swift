@@ -9,9 +9,9 @@ import Foundation
 struct Repo: Decodable {
     let id: Int32
     let name: String
-    let owner: Owner
-    let fullName: String
     let isPrivate: Bool
+    let owner: Owner
+    let description: String?
     let updatedAt: String
     let stargazersCount: Int
     let watchersCount: Int
@@ -22,9 +22,9 @@ struct Repo: Decodable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
-        case owner
-        case fullName = "full_name"
         case isPrivate = "private"
+        case owner
+        case description
         case updatedAt = "updated_at"
         case stargazersCount = "stargazers_count"
         case watchersCount = "watchers_count"
@@ -35,14 +35,11 @@ struct Repo: Decodable {
 
     struct Owner: Decodable {
         let id: Int32
-        let name: String
         let avatarURL: URL
         
         enum CodingKeys: String, CodingKey {
             case id
-            case name = "login"
             case avatarURL = "avatar_url"
         }
     }
-
 }
