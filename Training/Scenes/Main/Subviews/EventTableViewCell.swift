@@ -8,7 +8,7 @@ final class EventTableViewCell: UITableViewCell {
         Nuke.loadImage(with: event.actor.avatarUrl, into: profileImage)
     }
     
-    @IBOutlet var profileImage: UIImageView!{
+    @IBOutlet private var profileImage: UIImageView!{
         didSet {
             profileImage.clipsToBounds = true
             profileImage.layer.cornerRadius = profileImage.frame.size.width * 0.5
