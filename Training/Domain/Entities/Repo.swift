@@ -6,26 +6,43 @@
 //
 import Foundation
 
-struct Repo: Decodable, Hashable {
+struct Repo: Decodable {
     let id: Int32
-    let nodeId: String
     let name: String
+    let owner: Owner
     let fullName: String
     let isPrivate: Bool
-
+    let updatedAt: String
+    let stargazersCount: Int
+    let watchersCount: Int
+    let language: String?
+    let forksCount: Int
+    let openIssuesCount: Int
+    
     enum CodingKeys: String, CodingKey {
         case id
-        case nodeId = "node_id"
         case name
+        case owner
         case fullName = "full_name"
         case isPrivate = "private"
-    }
-    
-    static func ==(lhs: Repo, rhs: Repo) -> Bool {
-        lhs.id == rhs.id
+        case updatedAt = "updated_at"
+        case stargazersCount = "stargazers_count"
+        case watchersCount = "watchers_count"
+        case language
+        case forksCount = "forks_count"
+        case openIssuesCount = "open_issues_count"
     }
 
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+    struct Owner: Decodable {
+        let id: Int32
+        let name: String
+        let avatarURL: URL
+        
+        enum CodingKeys: String, CodingKey {
+            case id
+            case name = "login"
+            case avatarURL = "avatar_url"
+        }
     }
+
 }
