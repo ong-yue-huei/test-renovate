@@ -30,6 +30,7 @@
 		A764F0382648F9D800EEE731 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F0362648F9D800EEE731 /* EventTableViewCell.swift */; };
 		A764F0392648F9D800EEE731 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A764F0372648F9D800EEE731 /* EventTableViewCell.xib */; };
 		A7B548B02645BA4700176FE0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B548AF2645BA4700176FE0 /* R.generated.swift */; };
+		F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F99ADFE62696EE740033CFF5 /* Nuke */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */,
 				0B89F13F34F75F434BF51D3D /* Pods_Training.framework in Frameworks */,
 				A764F0252648D79B00EEE731 /* Alamofire in Frameworks */,
 			);
@@ -312,6 +314,7 @@
 			name = Training;
 			packageProductDependencies = (
 				A764F0242648D79B00EEE731 /* Alamofire */,
+				F99ADFE62696EE740033CFF5 /* Nuke */,
 			);
 			productName = Training;
 			productReference = A72D03DC264582E600DA791D /* Training.app */;
@@ -389,6 +392,7 @@
 			mainGroup = A72D03D3264582E600DA791D;
 			packageReferences = (
 				A764F0232648D79B00EEE731 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F99ADFE52696EE740033CFF5 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = A72D03DD264582E600DA791D /* Products */;
 			projectDirPath = "";
@@ -896,6 +900,14 @@
 				minimumVersion = 5.4.3;
 			};
 		};
+		F99ADFE52696EE740033CFF5 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -903,6 +915,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A764F0232648D79B00EEE731 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		F99ADFE62696EE740033CFF5 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F99ADFE52696EE740033CFF5 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
