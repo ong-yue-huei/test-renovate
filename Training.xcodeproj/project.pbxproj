@@ -33,6 +33,9 @@
 		F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F99ADFE62696EE740033CFF5 /* Nuke */; };
 		F99ADFEF2697E1CA0033CFF5 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */; };
 		F99ADFF12697E1E00033CFF5 /* Repository.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F99ADFF02697E1E00033CFF5 /* Repository.storyboard */; };
+		F99ADFF3269807F30033CFF5 /* GetRepoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99ADFF2269807F30033CFF5 /* GetRepoRequest.swift */; };
+		F99ADFF526980B7B0033CFF5 /* GetRepoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99ADFF426980B7B0033CFF5 /* GetRepoUseCase.swift */; };
+		F99ADFF726980F3E0033CFF5 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99ADFF626980F3E0033CFF5 /* Repo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,9 @@
 		C94CCBDFED768A11714B12D7 /* Pods-Training-TrainingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Training-TrainingUITests.debug.xcconfig"; path = "Target Support Files/Pods-Training-TrainingUITests/Pods-Training-TrainingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		F99ADFF02697E1E00033CFF5 /* Repository.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repository.storyboard; sourceTree = "<group>"; };
+		F99ADFF2269807F30033CFF5 /* GetRepoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepoRequest.swift; sourceTree = "<group>"; };
+		F99ADFF426980B7B0033CFF5 /* GetRepoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepoUseCase.swift; sourceTree = "<group>"; };
+		F99ADFF626980F3E0033CFF5 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		FFE0A3B1ACF5DD2D82584E45 /* Pods_TrainingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrainingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -250,6 +256,7 @@
 			children = (
 				A764F0322648E40D00EEE731 /* BaseRequest.swift */,
 				A764F0342648F01800EEE731 /* GetEventsRequest.swift */,
+				F99ADFF2269807F30033CFF5 /* GetRepoRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -286,6 +293,7 @@
 				A764F0262648E0DD00EEE731 /* Event.swift */,
 				A764F0282648E14000EEE731 /* User.swift */,
 				A764F02D2648E28800EEE731 /* RepositorySummary.swift */,
+				F99ADFF626980F3E0033CFF5 /* Repo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -294,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				6FD13B61DC54228533640833 /* GetEventsUseCase.swift */,
+				F99ADFF426980B7B0033CFF5 /* GetRepoUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -579,12 +588,15 @@
 			files = (
 				A764F0332648E40D00EEE731 /* BaseRequest.swift in Sources */,
 				A764F02E2648E28800EEE731 /* RepositorySummary.swift in Sources */,
+				F99ADFF526980B7B0033CFF5 /* GetRepoUseCase.swift in Sources */,
 				A72D03E4264582E600DA791D /* MainViewController.swift in Sources */,
 				A764F0382648F9D800EEE731 /* EventTableViewCell.swift in Sources */,
 				F99ADFEF2697E1CA0033CFF5 /* RepositoryViewController.swift in Sources */,
 				A72D03E0264582E600DA791D /* AppDelegate.swift in Sources */,
 				A764F0292648E14000EEE731 /* User.swift in Sources */,
+				F99ADFF726980F3E0033CFF5 /* Repo.swift in Sources */,
 				A764F0302648E2E800EEE731 /* Network.swift in Sources */,
+				F99ADFF3269807F30033CFF5 /* GetRepoRequest.swift in Sources */,
 				A72D03E2264582E600DA791D /* SceneDelegate.swift in Sources */,
 				A7B548B02645BA4700176FE0 /* R.generated.swift in Sources */,
 				A764F0272648E0DD00EEE731 /* Event.swift in Sources */,
