@@ -18,6 +18,7 @@ final class MainViewController: UIViewController {
         didSet {
             tableView.register(R.nib.eventTableViewCell)
             tableView.dataSource = dataSource
+            tableView.delegate = self
             tableView.tableHeaderView = UIView(frame: .zero)
             tableView.tableFooterView = UIView(frame: .zero)
         }
@@ -81,3 +82,14 @@ extension MainViewController {
         }!
     }
 }
+
+// MARK: - UITableViewDelegate
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let viewController = RepositoryViewController.instantiate()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
