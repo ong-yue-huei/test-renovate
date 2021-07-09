@@ -8,6 +8,10 @@ final class EventTableViewCell: UITableViewCell {
         Nuke.loadImage(with: event.actor.avatarUrl, into: profileImage)
     }
     
+    func getRepo() -> String {
+        return descriptionLabel.text!
+    }
+    
     @IBOutlet private var profileImage: UIImageView!{
         didSet {
             profileImage.clipsToBounds = true
