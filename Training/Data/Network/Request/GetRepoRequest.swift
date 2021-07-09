@@ -7,7 +7,7 @@
 
 import Alamofire
 
-struct GetReposRequest: BaseRequest {
+struct GetRepoRequest: BaseRequest {
     typealias Response = Repo
     var path: String = "/repos/"
     var method: HTTPMethod = .get
