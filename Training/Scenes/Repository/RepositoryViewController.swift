@@ -24,7 +24,7 @@ final class RepositoryViewController: UIViewController{
     @IBOutlet var repoDescription: UILabel!
     
     private let dependency: Dependency
-    private let ownerRepo: String
+    private let event: Event
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +37,9 @@ final class RepositoryViewController: UIViewController{
     @available(*, unavailable)
     required init?(coder: NSCoder) { fatalError() }
 
-    private init(coder: NSCoder, dependency: Dependency, ownerRepo: String) {
+    private init(coder: NSCoder, dependency: Dependency, event: Event) {
         self.dependency = dependency
-        self.ownerRepo = ownerRepo
+        self.event = event
         super.init(coder: coder)!
     }
 }
@@ -47,9 +47,9 @@ final class RepositoryViewController: UIViewController{
 // MARK: - Instantiate
 
 extension RepositoryViewController {
-    static func instantiate(dependency: Dependency = .init(), _ ownerRepo: String = "") -> Self {
+    static func instantiate(dependency: Dependency = .init(), _ event: Event) -> Self {
         R.storyboard.repository().instantiateInitialViewController{ coder in
-            Self(coder: coder, dependency: dependency, ownerRepo: ownerRepo)
+            Self(coder: coder, dependency: dependency, event: event)
         }!
     }
 }
@@ -58,7 +58,7 @@ extension RepositoryViewController {
 
 extension RepositoryViewController {
     private func fetchEvents() {
-        dependency.getRepoUseCase.perform(ownerRepo: ownerRepo) { [weak self] result in
+        dependency.getRepoUseCase.perform(ownerRepo: event.repo.name) { [weak self] result in
             switch result {
             case .success(let events):
                 print(">>>>>\(events)")
