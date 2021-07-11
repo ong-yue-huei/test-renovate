@@ -40,6 +40,11 @@ final class RepositoryViewController: UIViewController{
     @IBOutlet var watchersView: RepositoryCountView!
     @IBOutlet var forksView: RepositoryCountView!
     
+    @IBOutlet var privateView: RepositoryOtherView!
+    @IBOutlet var languageView: RepositoryOtherView!
+    @IBOutlet var issueView: RepositoryOtherView!
+    @IBOutlet var dateView: RepositoryOtherView!
+
     private let dependency: Dependency
     private let event: Event
     
@@ -97,5 +102,10 @@ private extension RepositoryViewController {
         stargazersView.setInfo(type: .stargazers, count: repo.stargazersCount)
         watchersView.setInfo(type: .watchers, count: repo.watchersCount)
         forksView.setInfo(type: .forks, count: repo.forksCount)
+        
+        privateView.setInfo(type: .isPrivate(repo.isPrivate))
+        languageView.setInfo(type: .language(repo.language))
+        issueView.setInfo(type: .issue(repo.openIssuesCount))
+        dateView.setInfo(type: .date(repo.updatedAt))
     }
 }

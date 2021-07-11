@@ -12,7 +12,7 @@ struct Repo: Decodable {
     let isPrivate: Bool
     let owner: Owner
     let description: String?
-    let updatedAt: String
+    let updatedAt: Date
     let stargazersCount: Int
     let watchersCount: Int
     let language: String?
