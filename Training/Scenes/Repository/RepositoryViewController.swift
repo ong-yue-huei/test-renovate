@@ -28,7 +28,11 @@ final class RepositoryViewController: UIViewController{
     @IBAction func detailButtonTouchUpInside(_ sender: Any) {
     }
     
-    @IBOutlet var repoOwnerImage: UIImageView!
+    @IBOutlet var repoOwnerImage: UIImageView!{
+        didSet {
+            repoOwnerImage.layer.cornerRadius = repoOwnerImage.frame.size.width * 0.5
+        }
+    }
     @IBOutlet var repoName: UILabel!
     @IBOutlet var repoDescription: UILabel!
     
@@ -81,5 +85,9 @@ private extension RepositoryViewController {
         Nuke.loadImage(with: event.actor.avatarUrl, into: actorImage)
         eventLabel.text = event.type
         actorName.text = event.actor.login
+        
+        Nuke.loadImage(with: repo.owner.avatarURL, into: repoOwnerImage)
+        repoName.text = repo.name
+        repoDescription.text = repo.description
     }
 }
