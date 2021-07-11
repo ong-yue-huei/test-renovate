@@ -6,14 +6,23 @@
 //
 
 import UIKit
+import Nuke
 
 final class RepositoryViewController: UIViewController{
     struct Dependency {
         var getRepoUseCase: GetRepoUseCase = GetRepoDefaultUseCase()
     }
     
-    @IBOutlet var actorImage: UIImageView!
-    @IBOutlet var eventBackground: UIView!
+    @IBOutlet var actorImage: UIImageView!{
+        didSet {
+            actorImage.layer.cornerRadius = actorImage.frame.size.width * 0.5
+        }
+    }
+    @IBOutlet var eventBackground: UIView!{
+        didSet {
+            eventBackground.layer.cornerRadius = 3;
+        }
+    }
     @IBOutlet var eventLabel: UILabel!
     @IBOutlet var actorName: UILabel!
     @IBAction func detailButtonTouchUpInside(_ sender: Any) {
@@ -56,16 +65,21 @@ extension RepositoryViewController {
 
 // MARK: - Private
 
-extension RepositoryViewController {
-    private func fetchEvents() {
+private extension RepositoryViewController {
+    func fetchEvents() {
         dependency.getRepoUseCase.perform(ownerRepo: event.repo.name) { [weak self] result in
             switch result {
-            case .success(let events):
-                print(">>>>>\(events)")
+            case .success(let repo):
+                self?.updateRepository(repo: repo)
             case .failure(let error):
                 print(error)
             }
         }
     }
+    
+    func updateRepository(repo: Repo) {
+        Nuke.loadImage(with: event.actor.avatarUrl, into: actorImage)
+        eventLabel.text = event.type
+        actorName.text = event.actor.login
+    }
 }
-
