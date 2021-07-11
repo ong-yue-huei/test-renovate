@@ -13,37 +13,37 @@ final class RepositoryViewController: UIViewController{
         var getRepoUseCase: GetRepoUseCase = GetRepoDefaultUseCase()
     }
     
-    @IBOutlet var actorImage: UIImageView!{
+    @IBOutlet private var actorImage: UIImageView!{
         didSet {
             actorImage.layer.cornerRadius = actorImage.frame.size.width * 0.5
         }
     }
-    @IBOutlet var eventBackground: UIView!{
+    @IBOutlet private var eventBackground: UIView!{
         didSet {
             eventBackground.layer.cornerRadius = 3;
         }
     }
-    @IBOutlet var eventLabel: UILabel!
-    @IBOutlet var actorName: UILabel!
-    @IBAction func detailButtonTouchUpInside(_ sender: Any) {
+    @IBOutlet private var eventLabel: UILabel!
+    @IBOutlet private var actorName: UILabel!
+    @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
     }
     
-    @IBOutlet var repoOwnerImage: UIImageView!{
+    @IBOutlet private var repoOwnerImage: UIImageView!{
         didSet {
             repoOwnerImage.layer.cornerRadius = repoOwnerImage.frame.size.width * 0.5
         }
     }
-    @IBOutlet var repoName: UILabel!
-    @IBOutlet var repoDescription: UILabel!
+    @IBOutlet private var repoName: UILabel!
+    @IBOutlet private var repoDescription: UILabel!
     
-    @IBOutlet var stargazersView: RepositoryCountView!
-    @IBOutlet var watchersView: RepositoryCountView!
-    @IBOutlet var forksView: RepositoryCountView!
+    @IBOutlet private var stargazersView: RepositoryCountView!
+    @IBOutlet private var watchersView: RepositoryCountView!
+    @IBOutlet private var forksView: RepositoryCountView!
     
-    @IBOutlet var privateView: RepositoryOtherView!
-    @IBOutlet var languageView: RepositoryOtherView!
-    @IBOutlet var issueView: RepositoryOtherView!
-    @IBOutlet var dateView: RepositoryOtherView!
+    @IBOutlet private var privateView: RepositoryOtherView!
+    @IBOutlet private var languageView: RepositoryOtherView!
+    @IBOutlet private var issueView: RepositoryOtherView!
+    @IBOutlet private var dateView: RepositoryOtherView!
 
     private let dependency: Dependency
     private let event: Event
