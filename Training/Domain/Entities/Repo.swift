@@ -9,6 +9,7 @@ import Foundation
 struct Repo: Decodable {
     let id: Int32
     let name: String
+    let fullName: String
     let isPrivate: Bool
     let owner: Owner
     let description: String?
@@ -22,6 +23,7 @@ struct Repo: Decodable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case fullName = "full_name"
         case isPrivate = "private"
         case owner
         case description

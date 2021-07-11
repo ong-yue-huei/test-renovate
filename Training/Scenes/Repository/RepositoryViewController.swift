@@ -91,6 +91,8 @@ private extension RepositoryViewController {
     }
     
     func updateRepository(repo: Repo) {
+        navigationItem.title = repo.fullName
+        
         Nuke.loadImage(with: event.actor.avatarUrl, into: actorImage)
         eventLabel.text = event.type
         actorName.text = event.actor.login
