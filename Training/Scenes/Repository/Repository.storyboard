@@ -209,9 +209,12 @@
                         <outlet property="actorName" destination="qZL-LK-PPv" id="2tm-BO-pYe"/>
                         <outlet property="eventBackground" destination="qPo-dS-nQ6" id="ghQ-wP-ZLW"/>
                         <outlet property="eventLabel" destination="rvH-Wh-x3Z" id="skT-YK-qXt"/>
+                        <outlet property="forksView" destination="SiO-Iv-od4" id="3lJ-q2-Sov"/>
                         <outlet property="repoDescription" destination="iLI-be-KEB" id="DqC-rC-rDk"/>
                         <outlet property="repoName" destination="ICl-br-d4I" id="2Xh-c8-SkL"/>
                         <outlet property="repoOwnerImage" destination="0ka-5n-ZZd" id="Ya2-ki-Gj3"/>
+                        <outlet property="stargazersView" destination="9k3-lk-0Tv" id="JYe-4h-4in"/>
+                        <outlet property="watchersView" destination="5Kc-2W-5Ib" id="Zbf-aR-LLr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

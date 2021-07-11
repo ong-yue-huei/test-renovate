@@ -36,6 +36,10 @@ final class RepositoryViewController: UIViewController{
     @IBOutlet var repoName: UILabel!
     @IBOutlet var repoDescription: UILabel!
     
+    @IBOutlet var stargazersView: RepositoryCountView!
+    @IBOutlet var watchersView: RepositoryCountView!
+    @IBOutlet var forksView: RepositoryCountView!
+    
     private let dependency: Dependency
     private let event: Event
     
@@ -89,5 +93,9 @@ private extension RepositoryViewController {
         Nuke.loadImage(with: repo.owner.avatarURL, into: repoOwnerImage)
         repoName.text = repo.name
         repoDescription.text = repo.description
+        
+        stargazersView.setInfo(type: .stargazers, count: repo.stargazersCount)
+        watchersView.setInfo(type: .watchers, count: repo.watchersCount)
+        forksView.setInfo(type: .forks, count: repo.forksCount)
     }
 }

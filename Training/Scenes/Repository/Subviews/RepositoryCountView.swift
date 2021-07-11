@@ -10,9 +10,23 @@ import UIKit
 @IBDesignable
 final class RepositoryCountView: UIView {
 
-    @IBOutlet var icon: UIImageView!
-    @IBOutlet var count: UILabel!
-    @IBOutlet var iconName: UILabel!
+    enum Count: String {
+        case stargazers = "Stargazers"
+        case watchers = "Watchers"
+        case forks = "Forks"
+
+        var icon: UIImage {
+            switch self {
+            case .stargazers: return R.image.star()!
+            case .watchers: return R.image.watch()!
+            case .forks: return R.image.fork()!
+            }
+        }
+    }
+    
+    @IBOutlet private var icon: UIImageView!
+    @IBOutlet private var count: UILabel!
+    @IBOutlet private var iconName: UILabel!
     
     override init(frame: CGRect) {
          super.init(frame: frame)
@@ -37,5 +51,11 @@ final class RepositoryCountView: UIView {
         view.layer.borderColor = R.color.controlHilight()!.cgColor
         view.layer.borderWidth = 0.5
         addSubview(view)
+    }
+    
+    func setInfo(type this: Count, count: Int) {
+        icon.image = this.icon
+        iconName.text = this.rawValue
+        self.count.text = String(count)
     }
 }
