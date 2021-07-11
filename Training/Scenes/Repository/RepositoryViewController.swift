@@ -12,6 +12,13 @@ final class RepositoryViewController: UIViewController{
         var getRepoUseCase: GetRepoUseCase = GetRepoDefaultUseCase()
     }
     
+    @IBOutlet var actorImage: UIImageView!
+    @IBOutlet var eventBackground: UIView!
+    @IBOutlet var eventLabel: UILabel!
+    @IBOutlet var actorName: UILabel!
+    @IBAction func detailButtonTouchUpInside(_ sender: Any) {
+    }
+    
     private let dependency: Dependency
     private let ownerRepo: String
     
