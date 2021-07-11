@@ -19,6 +19,10 @@ final class RepositoryViewController: UIViewController{
     @IBAction func detailButtonTouchUpInside(_ sender: Any) {
     }
     
+    @IBOutlet var repoOwnerImage: UIImageView!
+    @IBOutlet var repoName: UILabel!
+    @IBOutlet var repoDescription: UILabel!
+    
     private let dependency: Dependency
     private let ownerRepo: String
     
