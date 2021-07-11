@@ -50,7 +50,6 @@ final class RepositoryViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Repository"
         fetchEvents()
     }
     
