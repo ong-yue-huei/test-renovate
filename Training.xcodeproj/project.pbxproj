@@ -33,6 +33,7 @@
 		F911C732269BDA55000190E4 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911C731269BDA55000190E4 /* UserViewController.swift */; };
 		F911C734269BDA69000190E4 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F911C733269BDA69000190E4 /* User.storyboard */; };
 		F911C736269BE6FB000190E4 /* GetUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911C735269BE6FB000190E4 /* GetUserRequest.swift */; };
+		F911C738269BE7EC000190E4 /* GetUserReposRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911C737269BE7EC000190E4 /* GetUserReposRequest.swift */; };
 		F93994172698649700B549B0 /* RepositoryOtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93994162698649700B549B0 /* RepositoryOtherView.swift */; };
 		F93994192698761300B549B0 /* RepositoryOtherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93994182698761300B549B0 /* RepositoryOtherView.xib */; };
 		F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F99ADFE62696EE740033CFF5 /* Nuke */; };
@@ -100,6 +101,7 @@
 		F911C731269BDA55000190E4 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		F911C733269BDA69000190E4 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		F911C735269BE6FB000190E4 /* GetUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRequest.swift; sourceTree = "<group>"; };
+		F911C737269BE7EC000190E4 /* GetUserReposRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserReposRequest.swift; sourceTree = "<group>"; };
 		F93994162698649700B549B0 /* RepositoryOtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryOtherView.swift; sourceTree = "<group>"; };
 		F93994182698761300B549B0 /* RepositoryOtherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryOtherView.xib; sourceTree = "<group>"; };
 		F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				A764F0342648F01800EEE731 /* GetEventsRequest.swift */,
 				F99ADFF2269807F30033CFF5 /* GetRepoRequest.swift */,
 				F911C735269BE6FB000190E4 /* GetUserRequest.swift */,
+				F911C737269BE7EC000190E4 /* GetUserReposRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				F93994172698649700B549B0 /* RepositoryOtherView.swift in Sources */,
 				F99ADFF726980F3E0033CFF5 /* Repo.swift in Sources */,
 				A764F0302648E2E800EEE731 /* Network.swift in Sources */,
+				F911C738269BE7EC000190E4 /* GetUserReposRequest.swift in Sources */,
 				F99ADFF3269807F30033CFF5 /* GetRepoRequest.swift in Sources */,
 				F99AE006269861210033CFF5 /* RepositoryCountView.swift in Sources */,
 				A72D03E2264582E600DA791D /* SceneDelegate.swift in Sources */,
