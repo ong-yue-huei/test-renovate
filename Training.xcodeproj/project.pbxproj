@@ -30,6 +30,8 @@
 		A7B548B02645BA4700176FE0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B548AF2645BA4700176FE0 /* R.generated.swift */; };
 		BBF7453311DDAE6F754F03A9 /* Pods_TrainingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C106FCA52513286372AF6ED1 /* Pods_TrainingTests.framework */; };
 		E2D93345F09061BC00D7CB76 /* Pods_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75CE20D590CA571818B2DCB /* Pods_Training.framework */; };
+		F911C732269BDA55000190E4 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911C731269BDA55000190E4 /* UserViewController.swift */; };
+		F911C734269BDA69000190E4 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F911C733269BDA69000190E4 /* User.storyboard */; };
 		F93994172698649700B549B0 /* RepositoryOtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93994162698649700B549B0 /* RepositoryOtherView.swift */; };
 		F93994192698761300B549B0 /* RepositoryOtherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93994182698761300B549B0 /* RepositoryOtherView.xib */; };
 		F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F99ADFE62696EE740033CFF5 /* Nuke */; };
@@ -94,6 +96,8 @@
 		C106FCA52513286372AF6ED1 /* Pods_TrainingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrainingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CCBDFED768A11714B12D7 /* Pods-Training-TrainingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Training-TrainingUITests.debug.xcconfig"; path = "Target Support Files/Pods-Training-TrainingUITests/Pods-Training-TrainingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F75CE20D590CA571818B2DCB /* Pods_Training.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Training.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F911C731269BDA55000190E4 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		F911C733269BDA69000190E4 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		F93994162698649700B549B0 /* RepositoryOtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryOtherView.swift; sourceTree = "<group>"; };
 		F93994182698761300B549B0 /* RepositoryOtherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryOtherView.xib; sourceTree = "<group>"; };
 		F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 			children = (
 				A764F01F2648D65800EEE731 /* Main */,
 				F99ADFE82697D4360033CFF5 /* Repository */,
+				F911C72F269BDA22000190E4 /* User */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -313,6 +318,23 @@
 				F99ADFF426980B7B0033CFF5 /* GetRepoUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		F911C72F269BDA22000190E4 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F911C731269BDA55000190E4 /* UserViewController.swift */,
+				F911C733269BDA69000190E4 /* User.storyboard */,
+				F911C730269BDA35000190E4 /* Subviews */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		F911C730269BDA35000190E4 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		F99ADFE82697D4360033CFF5 /* Repository */ = {
@@ -458,6 +480,7 @@
 				A72D04102645876D00DA791D /* LaunchScreen.storyboard in Resources */,
 				F99ADFF12697E1E00033CFF5 /* Repository.storyboard in Resources */,
 				F99AE002269851340033CFF5 /* RepositoryCountView.xib in Resources */,
+				F911C734269BDA69000190E4 /* User.storyboard in Resources */,
 				F93994192698761300B549B0 /* RepositoryOtherView.xib in Resources */,
 				A72D03E9264582EA00DA791D /* Assets.xcassets in Resources */,
 			);
@@ -609,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A764F0332648E40D00EEE731 /* BaseRequest.swift in Sources */,
+				F911C732269BDA55000190E4 /* UserViewController.swift in Sources */,
 				A764F02E2648E28800EEE731 /* RepositorySummary.swift in Sources */,
 				F99ADFF526980B7B0033CFF5 /* GetRepoUseCase.swift in Sources */,
 				A72D03E4264582E600DA791D /* MainViewController.swift in Sources */,
