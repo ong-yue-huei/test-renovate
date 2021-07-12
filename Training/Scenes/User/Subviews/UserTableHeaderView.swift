@@ -25,6 +25,19 @@ final class UserTableHeaderView: UIView {
         }
     }
     
+    @IBOutlet private var userHeaderView: UIView! {    didSet {
+            userHeaderView.layer.borderWidth = 0.2
+            userHeaderView.layer.borderColor = UIColor.lightGray.cgColor
+        }
+    }
+    
+    @IBOutlet private var userRepoHeaderView: UIView! {
+        didSet {
+            userRepoHeaderView.layer.borderWidth = 0.2
+            userRepoHeaderView.layer.borderColor = UIColor.lightGray.cgColor
+        }
+    }
+
     func setUser(_ user: User) {
         Nuke.loadImage(with: user.avatarUrl, into: userImage)
         displayName.text = user.name ?? user.login

@@ -137,7 +137,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="mLS-B9-AyV" secondAttribute="bottom" id="91G-qv-fdX"/>
                                         <constraint firstItem="mLS-B9-AyV" firstAttribute="leading" secondItem="2JN-Ng-n2M" secondAttribute="leading" id="9Ga-tR-UXW"/>
@@ -150,7 +150,9 @@
                                         <outlet property="followingCount" destination="Zrd-Us-gsV" id="U2I-pF-kCK"/>
                                         <outlet property="loginName" destination="sFp-Hn-CTy" id="tpE-dt-Thl"/>
                                         <outlet property="personIcon" destination="nQT-ds-Nr5" id="cin-z8-svX"/>
+                                        <outlet property="userHeaderView" destination="LU6-RV-Lse" id="atP-dd-feb"/>
                                         <outlet property="userImage" destination="sgb-f3-mkD" id="OIi-nf-jEk"/>
+                                        <outlet property="userRepoHeaderView" destination="mLS-B9-AyV" id="aU8-N5-Fi0"/>
                                     </connections>
                                 </view>
                             </tableView>
@@ -183,11 +185,11 @@
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
