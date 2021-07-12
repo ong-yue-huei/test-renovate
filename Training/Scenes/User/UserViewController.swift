@@ -13,7 +13,30 @@ final class UserViewController: UIViewController{
         var getUserReposUseCase: GetUserReposUseCase = GetUserReposDefaultUseCase()
     }
     
-    @IBOutlet private var personIcon: UIImageView!{
+    private enum Const {
+        static let sectionIdentifier = "repos"
+    }
+    
+    private typealias TableViewDataSource = UITableViewDiffableDataSource<String, Repo>
+    private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Repo>
+    
+    @IBOutlet var tableView: UITableView! {
+        didSet {
+            tableView.register(R.nib.userRepoTableViewCell)
+            tableView.dataSource = dataSource
+            tableView.delegate = self
+            tableView.tableHeaderView = UIView(frame: .zero)
+            tableView.tableFooterView = UIView(frame: .zero)
+        }
+    }
+    
+    private lazy var dataSource = TableViewDataSource(tableView: tableView) { tableView, indexPath, element in
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.userRepoTableViewCell, for: indexPath)!
+        cell.userRepo(element)
+        return cell
+    }
+    
+    @IBOutlet private var personIcon: UIImageView! {
         didSet {
             personIcon.image = personIcon.image?.withHorizontallyFlippedOrientation()
         }
@@ -24,7 +47,6 @@ final class UserViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "\(username)'s Repository"
         fetchUser()
         fetchUserRepos()
@@ -70,10 +92,25 @@ private extension UserViewController {
         dependency.getUserReposUseCase.perform(username: username) { [weak self] result in
             switch result {
             case .success(let repos):
-                print("<<<<<<<<\(repos)")
+                self?.updateTableViewDataSet(repos: repos)
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func updateTableViewDataSet(repos: [Repo]) {
+        var snapshot = TableViewSnapShot()
+        snapshot.appendSections([Const.sectionIdentifier])
+        snapshot.appendItems(repos, toSection: Const.sectionIdentifier)
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension UserViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
