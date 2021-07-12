@@ -13,6 +13,12 @@ final class UserViewController: UIViewController{
         var getUserReposUseCase: GetUserReposUseCase = GetUserReposDefaultUseCase()
     }
     
+    @IBOutlet private var personIcon: UIImageView!{
+        didSet {
+            personIcon.image = personIcon.image?.withHorizontallyFlippedOrientation()
+        }
+    }
+    
     private let dependency: Dependency
     private let username: String
     

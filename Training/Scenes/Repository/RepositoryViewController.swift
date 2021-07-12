@@ -27,7 +27,7 @@ final class RepositoryViewController: UIViewController{
     @IBOutlet private var actorName: UILabel!
     @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
         let viewController = UserViewController.instantiate(username: event.actor.login)
-        navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.present(viewController, animated: true)
     }
     
     @IBOutlet private var repoOwnerImage: UIImageView!{
