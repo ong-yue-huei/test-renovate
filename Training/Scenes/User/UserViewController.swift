@@ -75,7 +75,6 @@ private extension UserViewController {
             switch result {
             case .success(let user):
                 self?.userTableHeaderView.setUser(user)
-                print(">>>>>>\(user)")
             case .failure(let error):
                 print(error)
             }
