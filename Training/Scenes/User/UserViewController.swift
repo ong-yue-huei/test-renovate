@@ -20,13 +20,12 @@ final class UserViewController: UIViewController{
     private typealias TableViewDataSource = UITableViewDiffableDataSource<String, Repo>
     private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Repo>
     
+    @IBOutlet var userTableHeaderView: UserTableHeaderView!
     @IBOutlet var tableView: UITableView! {
         didSet {
             tableView.register(R.nib.userRepoTableViewCell)
             tableView.dataSource = dataSource
             tableView.delegate = self
-            tableView.tableHeaderView = UIView(frame: .zero)
-            tableView.tableFooterView = UIView(frame: .zero)
         }
     }
     
@@ -36,18 +35,12 @@ final class UserViewController: UIViewController{
         return cell
     }
     
-    @IBOutlet private var personIcon: UIImageView! {
-        didSet {
-            personIcon.image = personIcon.image?.withHorizontallyFlippedOrientation()
-        }
-    }
-    
     private let dependency: Dependency
     private let username: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "\(username)'s Repository"
+        self.title = "\(username)'s Repository List"
         fetchUser()
         fetchUserRepos()
     }
@@ -81,6 +74,7 @@ private extension UserViewController {
         dependency.getUserUseCase.perform(username: username) { [weak self] result in
             switch result {
             case .success(let user):
+                self?.userTableHeaderView.setUser(user)
                 print(">>>>>>\(user)")
             case .failure(let error):
                 print(error)

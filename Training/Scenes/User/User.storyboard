@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" name="ControlHilight"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="2JN-Ng-n2M">
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="2JN-Ng-n2M" customClass="UserTableHeaderView" customModule="Training" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="196"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -82,6 +82,9 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="YES"/>
+                                            </accessibility>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wag-Ou-YVG" secondAttribute="trailing" constant="10" id="37i-38-Iwd"/>
                                                 <constraint firstItem="V31-az-qEK" firstAttribute="centerY" secondItem="nQT-ds-Nr5" secondAttribute="centerY" id="3U2-rH-Zgn"/>
@@ -141,6 +144,14 @@
                                         <constraint firstAttribute="trailing" secondItem="mLS-B9-AyV" secondAttribute="trailing" id="Lbj-TE-8P4"/>
                                         <constraint firstItem="mLS-B9-AyV" firstAttribute="top" secondItem="LU6-RV-Lse" secondAttribute="bottom" constant="14" id="YaB-3H-QuQ"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="displayName" destination="hNl-hw-Nrl" id="UCC-eq-2XW"/>
+                                        <outlet property="followersCount" destination="ogG-vZ-Kac" id="M69-W8-mHv"/>
+                                        <outlet property="followingCount" destination="Zrd-Us-gsV" id="U2I-pF-kCK"/>
+                                        <outlet property="loginName" destination="sFp-Hn-CTy" id="tpE-dt-Thl"/>
+                                        <outlet property="personIcon" destination="nQT-ds-Nr5" id="cin-z8-svX"/>
+                                        <outlet property="userImage" destination="sgb-f3-mkD" id="OIi-nf-jEk"/>
+                                    </connections>
                                 </view>
                             </tableView>
                         </subviews>
@@ -154,8 +165,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="personIcon" destination="nQT-ds-Nr5" id="wie-aX-fVe"/>
-                        <outlet property="tableView" destination="BLA-US-4NJ" id="dv3-sh-ehZ"/>
+                        <outlet property="tableView" destination="BLA-US-4NJ" id="PnN-V0-FEY"/>
+                        <outlet property="userTableHeaderView" destination="2JN-Ng-n2M" id="u6h-3V-lQ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
