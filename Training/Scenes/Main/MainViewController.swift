@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 final class MainViewController: UIViewController {
     struct Dependency {
@@ -31,7 +32,7 @@ final class MainViewController: UIViewController {
     }
 
     private let dependency: Dependency
-
+    private var cancellables: Set<AnyCancellable> = []
     // MARK: - Initializer
 
     @available(*, unavailable)
@@ -55,14 +56,18 @@ final class MainViewController: UIViewController {
 
 private extension MainViewController {
     func fetchEvents() {
-        dependency.getEventsUseCase.perform(page: 1) { [weak self] result in
-            switch result {
-            case .success(let events):
-                self?.updateTableViewDataSet(events: events)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        dependency.getEventsUseCase.perform(page: 1)
+            .sink(receiveCompletion: { completion in
+                switch completion{
+                    case .failure(let error):
+                        print(error)
+                    case .finished:
+                        print("Success")
+                }
+            }, receiveValue: { [weak self] result in
+                self?.updateTableViewDataSet(events: result)
+            })
+            .store(in: &cancellables)
     }
 
     func updateTableViewDataSet(events: [Event]) {
