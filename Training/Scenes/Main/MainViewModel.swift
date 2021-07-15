@@ -13,12 +13,21 @@ final class MainViewModel: ViewModel {
         var getEventsUseCase: GetEventsUseCase = GetEventsDefaultUseCase()
     }
     
+    struct Section: Equatable {
+        let type: SectionType
+        let cells: [Event]
+    }
+
+    enum SectionType {
+        case events
+    }
+    
     enum Action {
         case fetch
     }
     
     struct State {
-        var sections: [Event] = []
+        var sections: [Section] = []
     }
 
     var state: State { stateSubject.value }
@@ -50,7 +59,7 @@ private extension MainViewModel {
                         print("Success")
                 }
             }, receiveValue: { [weak self] result in
-                self?.stateSubject.value.sections = result
+                self?.stateSubject.value.sections = [Section(type: .events, cells: result)]
             })
             .store(in: &cancellables)
     }

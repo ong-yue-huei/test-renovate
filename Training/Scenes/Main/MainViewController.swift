@@ -2,13 +2,10 @@ import UIKit
 import Combine
 
 final class MainViewController: UIViewController {
-    private enum Const {
-        static let sectionIdentifier = "events"
-    }
-
     typealias ViewModel = MainViewModel.TypeErased
-    private typealias TableViewDataSource = UITableViewDiffableDataSource<String, Event>
-    private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Event>
+    private typealias SectionType = MainViewModel.SectionType
+    private typealias TableViewDataSource = UITableViewDiffableDataSource<SectionType, Event>
+    private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<SectionType, Event>
     
     private let viewModel: ViewModel
     private var cancellables: Set<AnyCancellable> = []
@@ -53,8 +50,10 @@ private extension MainViewController {
             .removeDuplicates()
             .sink{ [weak self] sections in
                 var snapshot = TableViewSnapShot()
-                snapshot.appendSections([Const.sectionIdentifier])
-                snapshot.appendItems(sections, toSection: Const.sectionIdentifier)
+                sections.forEach { section in
+                    snapshot.appendSections([section.type])
+                    snapshot.appendItems(section.cells, toSection: section.type)
+                }
                 self?.dataSource.apply(snapshot, animatingDifferences: false)
             }
             .store(in: &cancellables)
@@ -77,7 +76,8 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let event = dataSource.snapshot().itemIdentifiers(inSection: Const.sectionIdentifier)[indexPath.row]
+        let sectionType = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+        let event = dataSource.snapshot().itemIdentifiers(inSection: sectionType)[indexPath.row]
         let viewController = RepositoryViewController.instantiate(event)
         navigationController?.pushViewController(viewController, animated: true)
     }
