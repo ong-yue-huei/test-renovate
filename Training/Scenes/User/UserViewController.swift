@@ -9,15 +9,10 @@ import UIKit
 import Combine
 
 final class UserViewController: UIViewController{
-    struct Dependency {
-        var getUserUseCase: GetUserUseCase = GetUserDefaultUseCase()
-        var getUserReposUseCase: GetUserReposUseCase = GetUserReposDefaultUseCase()
-    }
-    
     private enum Const {
         static let sectionIdentifier = "repos"
     }
-    
+    typealias ViewModel = UserViewModel.TypeErased
     private typealias TableViewDataSource = UITableViewDiffableDataSource<String, Repo>
     private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Repo>
     
@@ -37,14 +32,15 @@ final class UserViewController: UIViewController{
         return cell
     }
     
-    private let dependency: Dependency
     private let username: String
     private var cancellables: Set<AnyCancellable> = []
+    private let viewModel: ViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "\(username)'s Repository List"
-        fetchUserAndUserRepos()
+        bind()
+        viewModel.send(action: .fetch(username: username))
     }
     
     // MARK: - Initializer
@@ -52,8 +48,8 @@ final class UserViewController: UIViewController{
     @available(*, unavailable)
     required init?(coder: NSCoder) { fatalError() }
 
-    private init(coder: NSCoder, dependency: Dependency, username: String) {
-        self.dependency = dependency
+    private init(coder: NSCoder, viewModel: ViewModel, username: String) {
+        self.viewModel = viewModel
         self.username = username
         super.init(coder: coder)!
     }
@@ -62,38 +58,32 @@ final class UserViewController: UIViewController{
 // MARK: - Instantiate
 
 extension UserViewController {
-    static func instantiate(dependency: Dependency = .init(), username: String) -> Self {
+    static func instantiate(viewModel: ViewModel = UserViewModel().eraseToAnyViewModel(), username: String) -> Self {
         R.storyboard.user().instantiateInitialViewController { coder in
-            Self(coder: coder, dependency: dependency, username: username)
+            Self(coder: coder, viewModel: viewModel, username: username)
         }!
     }
 }
 
-// MARK: - Private
+// MARK: - Setup
 
 private extension UserViewController {
-    func fetchUserAndUserRepos() {
-        dependency.getUserUseCase.perform(username: username)
-            .zip(dependency.getUserReposUseCase.perform(username: username))
-            .sink(receiveCompletion: { completion in
-                switch completion{
-                    case .failure(let error):
-                        print(error)
-                    case .finished:
-                        print("Success")
-                }
-            }, receiveValue: { [weak self] result in
-                self?.userTableHeaderView.setUser(result.0)
-                self?.updateTableViewDataSet(repos: result.1)
-            })
+    func bind() {
+        viewModel.statePublisher.compactMap(\.user)
+            .sink { [weak self] user in
+                self?.userTableHeaderView.setUser(user)
+            }
             .store(in: &cancellables)
-    }
-    
-    func updateTableViewDataSet(repos: [Repo]) {
-        var snapshot = TableViewSnapShot()
-        snapshot.appendSections([Const.sectionIdentifier])
-        snapshot.appendItems(repos, toSection: Const.sectionIdentifier)
-        dataSource.apply(snapshot, animatingDifferences: false)
+        
+        viewModel.statePublisher.map(\.sections)
+            .removeDuplicates()
+            .sink { [weak self] sections in
+                var snapshot = TableViewSnapShot()
+                snapshot.appendSections([Const.sectionIdentifier])
+                snapshot.appendItems(sections, toSection: Const.sectionIdentifier)
+                self?.dataSource.apply(snapshot, animatingDifferences: false)
+            }
+            .store(in: &cancellables)
     }
 }
 
