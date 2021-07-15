@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RepositoryViewController: UIViewController{
+final class RepositoryViewController: UIViewController {
     
 }
 
