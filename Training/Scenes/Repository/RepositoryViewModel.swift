@@ -9,26 +9,49 @@ import Combine
 import ViewModelCore
 
 final class RepositoryViewModel: ViewModel {
+    struct Dependency {
+        var getRepoUseCase: GetRepoUseCase = GetRepoDefaultUseCase()
+    }
+    
     enum Action {
-        case temp
+        case fetch(event: Event)
     }
     
     struct State {
-        
+        var repo: Repo?
     }
     
     var state: State { stateSubject.value }
     let stateSubject = CurrentValueSubject<State, Never>(.init())
     var statePublisher: AnyPublisher<State, Never> { stateSubject.eraseToAnyPublisher() }
+    private var cancellables: Set<AnyCancellable> = []
+    private let dependency: Dependency
     
-    init() {
-           
+    init(dependency: Dependency = .init()) {
+        self.dependency = dependency
     }
     
     func send(action: Action) {
         switch action {
-        case .temp:
-            print()
+        case .fetch(let event):
+            fetchEvents(event)
         }
+    }
+}
+
+private extension RepositoryViewModel {
+    func fetchEvents(_ event: Event) {
+        dependency.getRepoUseCase.perform(ownerRepo: event.repo.name)
+            .sink(receiveCompletion: { completion in
+                switch completion{
+                    case .failure(let error):
+                        print(error)
+                    case .finished:
+                        print("Success")
+                }
+            }, receiveValue: { [weak self] result in
+                self?.stateSubject.value.repo = result
+            })
+            .store(in: &cancellables)
     }
 }

@@ -10,20 +10,10 @@ import Nuke
 import Combine
 
 final class RepositoryViewController: UIViewController {
-    struct Dependency {
-        var getRepoUseCase: GetRepoUseCase = GetRepoDefaultUseCase()
-    }
+    typealias ViewModel = RepositoryViewModel.TypeErased
     
-    @IBOutlet private var actorImage: UIImageView! {
-        didSet {
-            actorImage.layer.cornerRadius = actorImage.frame.size.width * 0.5
-        }
-    }
-    @IBOutlet private var eventBackground: UIView! {
-        didSet {
-            eventBackground.layer.cornerRadius = 3;
-        }
-    }
+    @IBOutlet private var actorImage: UIImageView!
+    @IBOutlet private var eventBackground: UIView!
     @IBOutlet private var eventLabel: UILabel!
     @IBOutlet private var actorName: UILabel!
     @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
@@ -32,11 +22,7 @@ final class RepositoryViewController: UIViewController {
         navigationController?.present(navigationViewController, animated: true)
     }
     
-    @IBOutlet private var repoOwnerImage: UIImageView! {
-        didSet {
-            repoOwnerImage.layer.cornerRadius = repoOwnerImage.frame.size.width * 0.5
-        }
-    }
+    @IBOutlet private var repoOwnerImage: UIImageView!
     @IBOutlet private var repoName: UILabel!
     @IBOutlet private var repoDescription: UILabel!
     
@@ -49,13 +35,15 @@ final class RepositoryViewController: UIViewController {
     @IBOutlet private var issueView: RepositoryOtherView!
     @IBOutlet private var dateView: RepositoryOtherView!
 
-    private let dependency: Dependency
     private let event: Event
+    private let viewModel: ViewModel
     private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchEvents()
+        setupUI()
+        bind()
+        viewModel.send(action: .fetch(event: event))
     }
     
     // MARK: - Initializer
@@ -63,9 +51,9 @@ final class RepositoryViewController: UIViewController {
     @available(*, unavailable)
     required init?(coder: NSCoder) { fatalError() }
 
-    private init(coder: NSCoder, dependency: Dependency, event: Event) {
-        self.dependency = dependency
+    private init(coder: NSCoder, viewModel: ViewModel, event: Event) {
         self.event = event
+        self.viewModel = viewModel
         super.init(coder: coder)!
     }
 }
@@ -73,28 +61,27 @@ final class RepositoryViewController: UIViewController {
 // MARK: - Instantiate
 
 extension RepositoryViewController {
-    static func instantiate(dependency: Dependency = .init(), _ event: Event) -> Self {
-        R.storyboard.repository().instantiateInitialViewController{ coder in
-            Self(coder: coder, dependency: dependency, event: event)
-        }!
-    }
+    static func instantiate(viewModel: ViewModel = RepositoryViewModel().eraseToAnyViewModel(), _ event: Event) -> Self {
+            R.storyboard.repository().instantiateInitialViewController {
+                Self(coder: $0, viewModel: viewModel, event: event)
+            }!
+        }
 }
 
-// MARK: - Private
+// MARK: - Setup
 
 private extension RepositoryViewController {
-    func fetchEvents() {
-        dependency.getRepoUseCase.perform(ownerRepo: event.repo.name)
-            .sink(receiveCompletion: { completion in
-                switch completion{
-                    case .failure(let error):
-                        print(error)
-                    case .finished:
-                        print("Success")
-                }
-            }, receiveValue: { [weak self] result in
-                self?.updateRepository(repo: result)
-            })
+    func setupUI() {
+        actorImage.layer.cornerRadius = actorImage.frame.size.width * 0.5
+        eventBackground.layer.cornerRadius = 3;
+        repoOwnerImage.layer.cornerRadius = repoOwnerImage.frame.size.width * 0.5
+    }
+    
+    func bind() {
+        viewModel.statePublisher.compactMap(\.repo)
+            .sink{ [weak self] repo in
+                self?.updateRepository(repo: repo)
+            }
             .store(in: &cancellables)
     }
     
