@@ -27,7 +27,6 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Events"
         setupUI()
         bind()
         viewModel.send(action: .fetch)
@@ -43,6 +42,7 @@ private extension MainViewController {
         tableView.delegate = self
         tableView.tableHeaderView = UIView(frame: .zero)
         tableView.tableFooterView = UIView(frame: .zero)
+        navigationItem.title = "Events"
     }
     
     func bind() {
