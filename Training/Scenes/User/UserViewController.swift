@@ -9,12 +9,10 @@ import UIKit
 import Combine
 
 final class UserViewController: UIViewController{
-    private enum Const {
-        static let sectionIdentifier = "repos"
-    }
     typealias ViewModel = UserViewModel.TypeErased
-    private typealias TableViewDataSource = UITableViewDiffableDataSource<String, Repo>
-    private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Repo>
+    private typealias SectionType = UserViewModel.SectionType
+    private typealias TableViewDataSource = UITableViewDiffableDataSource<SectionType, Repo>
+    private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<SectionType, Repo>
     
     @IBOutlet var userTableHeaderView: UserTableHeaderView!
     @IBOutlet var tableView: UITableView!
@@ -26,8 +24,8 @@ final class UserViewController: UIViewController{
     }
     
     private let username: String
-    private var cancellables: Set<AnyCancellable> = []
     private let viewModel: ViewModel
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,8 +78,10 @@ private extension UserViewController {
             .removeDuplicates()
             .sink { [weak self] sections in
                 var snapshot = TableViewSnapShot()
-                snapshot.appendSections([Const.sectionIdentifier])
-                snapshot.appendItems(sections, toSection: Const.sectionIdentifier)
+                sections.forEach { section in
+                    snapshot.appendSections([section.type])
+                    snapshot.appendItems(section.cells, toSection: section.type)
+                }
                 self?.dataSource.apply(snapshot, animatingDifferences: false)
             }
             .store(in: &cancellables)

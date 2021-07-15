@@ -14,13 +14,22 @@ final class UserViewModel: ViewModel {
         var getUserReposUseCase: GetUserReposUseCase = GetUserReposDefaultUseCase()
     }
     
+    struct Section: Equatable {
+         let type: SectionType
+         let cells: [Repo]
+     }
+
+     enum SectionType {
+         case events
+     }
+
     enum Action {
         case fetch(username: String)
     }
     
     struct State {
         var user: User?
-        var sections: [Repo] = []
+        var sections: [Section] = []
     }
     
     var state: State { stateSubject.value }
@@ -54,7 +63,7 @@ private extension UserViewModel {
                 }
             }, receiveValue: { [weak self] result in
                 self?.stateSubject.value.user = result.0
-                self?.stateSubject.value.sections = result.1
+                self?.stateSubject.value.sections = [Section(type: .events, cells: result.1)]
             })
             .store(in: &cancellables)
     }
