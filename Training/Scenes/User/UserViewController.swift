@@ -17,14 +17,7 @@ final class UserViewController: UIViewController{
     private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Repo>
     
     @IBOutlet var userTableHeaderView: UserTableHeaderView!
-    @IBOutlet var tableView: UITableView! {
-        didSet {
-            tableView.register(R.nib.userRepoTableViewCell)
-            tableView.dataSource = dataSource
-            tableView.delegate = self
-            tableView.tableFooterView = UIView(frame: .zero)
-        }
-    }
+    @IBOutlet var tableView: UITableView!
     
     private lazy var dataSource = TableViewDataSource(tableView: tableView) { tableView, indexPath, element in
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.userRepoTableViewCell, for: indexPath)!
@@ -38,7 +31,7 @@ final class UserViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "\(username)'s Repository List"
+        setupUI()
         bind()
         viewModel.send(action: .fetch(username: username))
     }
@@ -68,6 +61,14 @@ extension UserViewController {
 // MARK: - Setup
 
 private extension UserViewController {
+    func setupUI() {
+        tableView.register(R.nib.userRepoTableViewCell)
+        tableView.dataSource = dataSource
+        tableView.delegate = self
+        tableView.tableFooterView = UIView(frame: .zero)
+        title = "\(username)'s Repository List"
+    }
+    
     func bind() {
         viewModel.statePublisher.compactMap(\.user)
             .sink { [weak self] user in
