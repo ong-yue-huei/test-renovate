@@ -13,28 +13,28 @@ final class RepositoryViewController: UIViewController {
         var getRepoUseCase: GetRepoUseCase = GetRepoDefaultUseCase()
     }
     
-    @IBOutlet private var actorImage: UIImageView! {
+    @IBOutlet private var actorImageView: UIImageView! {
         didSet {
-            actorImage.layer.cornerRadius = actorImage.frame.size.width * 0.5
+            actorImageView.layer.cornerRadius = actorImageView.frame.size.width * 0.5
         }
     }
-    @IBOutlet private var eventBackground: UIView! {
+    @IBOutlet private var eventBackgroundView: UIView! {
         didSet {
-            eventBackground.layer.cornerRadius = 3;
+            eventBackgroundView.layer.cornerRadius = 3;
         }
     }
     @IBOutlet private var eventLabel: UILabel!
-    @IBOutlet private var actorName: UILabel!
+    @IBOutlet private var actorNameLabel: UILabel!
     @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
     }
     
-    @IBOutlet private var repoOwnerImage: UIImageView! {
+    @IBOutlet private var repoOwnerImageView: UIImageView! {
         didSet {
-            repoOwnerImage.layer.cornerRadius = repoOwnerImage.frame.size.width * 0.5
+            repoOwnerImageView.layer.cornerRadius = repoOwnerImageView.frame.size.width * 0.5
         }
     }
-    @IBOutlet private var repoName: UILabel!
-    @IBOutlet private var repoDescription: UILabel!
+    @IBOutlet private var repoNameLabel: UILabel!
+    @IBOutlet private var repoDescriptionLabel: UILabel!
     
     @IBOutlet private var stargazersView: RepositoryCountView!
     @IBOutlet private var watchersView: RepositoryCountView!
@@ -92,13 +92,13 @@ private extension RepositoryViewController {
     func updateRepository(repo: Repo) {
         navigationItem.title = repo.fullName
         
-        Nuke.loadImage(with: event.actor.avatarUrl, into: actorImage)
+        Nuke.loadImage(with: event.actor.avatarUrl, into: actorImageView)
         eventLabel.text = event.type
-        actorName.text = event.actor.login
+        actorNameLabel.text = event.actor.login
         
-        Nuke.loadImage(with: repo.owner.avatarURL, into: repoOwnerImage)
-        repoName.text = repo.name
-        repoDescription.text = repo.description
+        Nuke.loadImage(with: repo.owner.avatarURL, into: repoOwnerImageView)
+        repoNameLabel.text = repo.name
+        repoDescriptionLabel.text = repo.description
         
         stargazersView.setInfo(type: .stargazers, count: repo.stargazersCount)
         watchersView.setInfo(type: .watchers, count: repo.watchersCount)

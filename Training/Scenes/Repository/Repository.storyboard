@@ -206,18 +206,18 @@
                     </view>
                     <connections>
                         <outlet property="IssueView" destination="8mk-zR-riM" id="ZTM-Io-waQ"/>
-                        <outlet property="actorImage" destination="mfr-fj-ZMK" id="LwP-Zl-JHB"/>
-                        <outlet property="actorName" destination="qZL-LK-PPv" id="2tm-BO-pYe"/>
+                        <outlet property="actorImageView" destination="mfr-fj-ZMK" id="buN-7T-lxW"/>
+                        <outlet property="actorNameLabel" destination="qZL-LK-PPv" id="YEc-0u-N1p"/>
                         <outlet property="dateView" destination="8mk-zR-riM" id="BX1-u3-4h1"/>
-                        <outlet property="eventBackground" destination="qPo-dS-nQ6" id="ghQ-wP-ZLW"/>
+                        <outlet property="eventBackgroundView" destination="qPo-dS-nQ6" id="Bjm-3A-Mrj"/>
                         <outlet property="eventLabel" destination="rvH-Wh-x3Z" id="skT-YK-qXt"/>
                         <outlet property="forksView" destination="SiO-Iv-od4" id="3lJ-q2-Sov"/>
                         <outlet property="issueView" destination="1FF-gu-VH7" id="T9N-NT-cFb"/>
                         <outlet property="languageView" destination="BGV-Mn-r17" id="qUb-vQ-qK6"/>
                         <outlet property="privateView" destination="kYE-qo-toa" id="kah-nO-rXr"/>
-                        <outlet property="repoDescription" destination="iLI-be-KEB" id="DqC-rC-rDk"/>
-                        <outlet property="repoName" destination="ICl-br-d4I" id="2Xh-c8-SkL"/>
-                        <outlet property="repoOwnerImage" destination="0ka-5n-ZZd" id="Ya2-ki-Gj3"/>
+                        <outlet property="repoDescriptionLabel" destination="iLI-be-KEB" id="Zxl-if-CWT"/>
+                        <outlet property="repoNameLabel" destination="ICl-br-d4I" id="w54-zb-H71"/>
+                        <outlet property="repoOwnerImageView" destination="0ka-5n-ZZd" id="4qt-YP-dIm"/>
                         <outlet property="stargazersView" destination="9k3-lk-0Tv" id="JYe-4h-4in"/>
                         <outlet property="watchersView" destination="5Kc-2W-5Ib" id="Zbf-aR-LLr"/>
                     </connections>
