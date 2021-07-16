@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class UserViewController: UIViewController{
+final class UserViewController: UIViewController {
     struct Dependency {
         var getUserUseCase: GetUserUseCase = GetUserDefaultUseCase()
         var getUserReposUseCase: GetUserReposUseCase = GetUserReposDefaultUseCase()
