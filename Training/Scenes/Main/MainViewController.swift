@@ -2,88 +2,69 @@ import UIKit
 import Combine
 
 final class MainViewController: UIViewController {
-    struct Dependency {
-        var getEventsUseCase: GetEventsUseCase = GetEventsDefaultUseCase()
-    }
+    typealias ViewModel = MainViewModel.TypeErased
+    private typealias SectionType = MainViewModel.SectionType
+    private typealias TableViewDataSource = UITableViewDiffableDataSource<SectionType, Event>
+    private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<SectionType, Event>
+    
+    private let viewModel: ViewModel
+    private var cancellables: Set<AnyCancellable> = []
 
-    private enum Const {
-        static let sectionIdentifier = "events"
-    }
-
-    private typealias TableViewDataSource = UITableViewDiffableDataSource<String, Event>
-    private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Event>
-
-    // MARK: - Property
-
-    @IBOutlet private var tableView: UITableView! {
-        didSet {
-            tableView.register(R.nib.eventTableViewCell)
-            tableView.dataSource = dataSource
-            tableView.delegate = self
-            tableView.tableHeaderView = UIView(frame: .zero)
-            tableView.tableFooterView = UIView(frame: .zero)
-        }
-    }
-
+    @IBOutlet private var tableView: UITableView!
     private lazy var dataSource = TableViewDataSource(tableView: tableView) { tableView, indexPath, element in
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.eventTableViewCell, for: indexPath)!
         cell.event(element)
         return cell
     }
 
-    private let dependency: Dependency
-    private var cancellables: Set<AnyCancellable> = []
-    // MARK: - Initializer
-
     @available(*, unavailable)
     required init?(coder: NSCoder) { fatalError() }
 
-    private init(coder: NSCoder, dependency: Dependency) {
-        self.dependency = dependency
+    private init(coder: NSCoder, viewModel: ViewModel) {
+        self.viewModel = viewModel
         super.init(coder: coder)!
     }
 
-    // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Events"
-        fetchEvents()
+        setupUI()
+        bind()
+        viewModel.send(action: .fetch)
     }
 }
 
-// MARK: - Private
+// MARK: - Setup
 
 private extension MainViewController {
-    func fetchEvents() {
-        dependency.getEventsUseCase.perform(page: 1)
-            .sink(receiveCompletion: { completion in
-                switch completion{
-                    case .failure(let error):
-                        print(error)
-                    case .finished:
-                        print("Success")
-                }
-            }, receiveValue: { [weak self] result in
-                self?.updateTableViewDataSet(events: result)
-            })
-            .store(in: &cancellables)
+    func setupUI() {
+        tableView.register(R.nib.eventTableViewCell)
+        tableView.dataSource = dataSource
+        tableView.tableHeaderView = UIView(frame: .zero)
+        tableView.tableFooterView = UIView(frame: .zero)
+        navigationItem.title = "Events"
     }
-
-    func updateTableViewDataSet(events: [Event]) {
-        var snapshot = TableViewSnapShot()
-        snapshot.appendSections([Const.sectionIdentifier])
-        snapshot.appendItems(events, toSection: Const.sectionIdentifier)
-        dataSource.apply(snapshot, animatingDifferences: false)
+    
+    func bind() {
+        viewModel.statePublisher.map(\.sections)
+            .removeDuplicates()
+            .sink{ [weak self] sections in
+                var snapshot = TableViewSnapShot()
+                sections.forEach { section in
+                    snapshot.appendSections([section.type])
+                    snapshot.appendItems(section.cells, toSection: section.type)
+                }
+                self?.dataSource.apply(snapshot, animatingDifferences: false)
+            }
+            .store(in: &cancellables)
     }
 }
 
 // MARK: - Instantiate
 
 extension MainViewController {
-    static func instantiate(dependency: Dependency = .init()) -> Self {
-        R.storyboard.main().instantiateInitialViewController { coder in
-            Self(coder: coder, dependency: dependency)
+    static func instantiate(viewModel: ViewModel = MainViewModel().eraseToAnyViewModel()) -> Self {
+        R.storyboard.main().instantiateInitialViewController {
+            Self(coder: $0, viewModel: viewModel)
         }!
     }
 }
@@ -94,7 +75,8 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let event = dataSource.snapshot().itemIdentifiers(inSection: Const.sectionIdentifier)[indexPath.row]
+        let sectionType = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+        let event = dataSource.snapshot().itemIdentifiers(inSection: sectionType)[indexPath.row]
         let viewController = RepositoryViewController.instantiate(event)
         navigationController?.pushViewController(viewController, animated: true)
     }
