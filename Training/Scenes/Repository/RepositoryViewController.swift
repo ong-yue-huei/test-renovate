@@ -18,7 +18,7 @@ final class RepositoryViewController: UIViewController{
             actorImage.layer.cornerRadius = actorImage.frame.size.width * 0.5
         }
     }
-    @IBOutlet private var eventBackground: UIView!{
+    @IBOutlet private var eventBackground: UIView! {
         didSet {
             eventBackground.layer.cornerRadius = 3;
         }
