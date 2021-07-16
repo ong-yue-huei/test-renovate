@@ -77,7 +77,7 @@ extension MainViewController: UITableViewDelegate {
         
         let sectionType = dataSource.snapshot().sectionIdentifiers[indexPath.section]
         let event = dataSource.snapshot().itemIdentifiers(inSection: sectionType)[indexPath.row]
-        let viewController = RepositoryViewController.instantiate(event)
+        let viewController = RepositoryViewController.instantiate(argument: .init(event: event))
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

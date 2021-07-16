@@ -17,7 +17,7 @@ final class RepositoryViewController: UIViewController {
     @IBOutlet private var eventLabel: UILabel!
     @IBOutlet private var actorName: UILabel!
     @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
-        let viewController = UserViewController.instantiate(username: event.actor.login)
+        let viewController = UserViewController.instantiate(username: viewModel.argument.event.actor.login)
         let navigationViewController = UINavigationController(rootViewController: viewController)
         navigationController?.present(navigationViewController, animated: true)
     }
@@ -35,7 +35,6 @@ final class RepositoryViewController: UIViewController {
     @IBOutlet private var issueView: RepositoryOtherView!
     @IBOutlet private var dateView: RepositoryOtherView!
 
-    private let event: Event
     private let viewModel: ViewModel
     private var cancellables: Set<AnyCancellable> = []
     
@@ -43,7 +42,7 @@ final class RepositoryViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bind()
-        viewModel.send(action: .fetch(event: event))
+        viewModel.send(action: .fetch)
     }
     
     // MARK: - Initializer
@@ -51,8 +50,7 @@ final class RepositoryViewController: UIViewController {
     @available(*, unavailable)
     required init?(coder: NSCoder) { fatalError() }
 
-    private init(coder: NSCoder, viewModel: ViewModel, event: Event) {
-        self.event = event
+    private init(coder: NSCoder, viewModel: ViewModel) {
         self.viewModel = viewModel
         super.init(coder: coder)!
     }
@@ -61,9 +59,14 @@ final class RepositoryViewController: UIViewController {
 // MARK: - Instantiate
 
 extension RepositoryViewController {
-    static func instantiate(viewModel: ViewModel = RepositoryViewModel().eraseToAnyViewModel(), _ event: Event) -> Self {
+    static func instantiate(argument: ViewModel.Argument) -> Self {
+       let viewModel = RepositoryViewModel(argument: argument)
+       return instantiate(viewModel: viewModel.eraseToAnyViewModel())
+    }
+    
+    static func instantiate(viewModel: ViewModel) -> Self {
             R.storyboard.repository().instantiateInitialViewController {
-                Self(coder: $0, viewModel: viewModel, event: event)
+                Self(coder: $0, viewModel: viewModel)
             }!
         }
 }
@@ -88,9 +91,9 @@ private extension RepositoryViewController {
     func updateRepository(repo: Repo) {
         navigationItem.title = repo.fullName
         
-        Nuke.loadImage(with: event.actor.avatarUrl, into: actorImage)
-        eventLabel.text = event.type
-        actorName.text = event.actor.login
+        Nuke.loadImage(with: viewModel.argument.event.actor.avatarUrl, into: actorImage)
+        eventLabel.text = viewModel.argument.event.type
+        actorName.text = viewModel.argument.event.actor.login
         
         Nuke.loadImage(with: repo.owner.avatarURL, into: repoOwnerImage)
         repoName.text = repo.name
