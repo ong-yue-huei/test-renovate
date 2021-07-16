@@ -20,6 +20,9 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <color key="separatorColor" name="ControlHilight"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="TpR-z8-lh3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
