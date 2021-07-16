@@ -62,7 +62,6 @@ private extension UserViewController {
     func setupUI() {
         tableView.register(R.nib.userRepoTableViewCell)
         tableView.dataSource = dataSource
-        tableView.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
         title = "\(username)'s Repository List"
     }
