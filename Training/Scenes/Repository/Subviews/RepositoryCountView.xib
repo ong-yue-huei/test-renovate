@@ -9,9 +9,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RepositoryCountView" customModule="Training" customModuleProvider="target">
             <connections>
-                <outlet property="count" destination="OOI-m4-zja" id="jRV-sb-DvY"/>
-                <outlet property="icon" destination="PwO-MH-MGB" id="gXU-mu-0wQ"/>
-                <outlet property="iconName" destination="Dwu-el-Svf" id="czL-Af-NUP"/>
+                <outlet property="countLabel" destination="OOI-m4-zja" id="dgR-ny-yDd"/>
+                <outlet property="iconImageView" destination="PwO-MH-MGB" id="lfb-0d-QMg"/>
+                <outlet property="iconNameLabel" destination="Dwu-el-Svf" id="Izf-4d-9I4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

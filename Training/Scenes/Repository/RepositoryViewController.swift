@@ -40,10 +40,10 @@ final class RepositoryViewController: UIViewController {
     @IBOutlet private var watchersView: RepositoryCountView!
     @IBOutlet private var forksView: RepositoryCountView!
     
-    @IBOutlet private var privateView: RepositoryOtherView!
-    @IBOutlet private var languageView: RepositoryOtherView!
-    @IBOutlet private var issueView: RepositoryOtherView!
-    @IBOutlet private var dateView: RepositoryOtherView!
+    @IBOutlet private var privateView: RepositoryDataView!
+    @IBOutlet private var languageView: RepositoryDataView!
+    @IBOutlet private var issueView: RepositoryDataView!
+    @IBOutlet private var dateView: RepositoryDataView!
 
     private let dependency: Dependency
     private let event: Event

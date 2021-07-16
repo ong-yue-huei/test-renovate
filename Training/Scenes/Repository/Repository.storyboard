@@ -158,11 +158,11 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9D-oq-Gqe">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYE-qo-toa" userLabel="Private" customClass="RepositoryOtherView" customModule="Training" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYE-qo-toa" userLabel="Private" customClass="RepositoryDataView" customModule="Training" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="42"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGV-Mn-r17" userLabel="Language" customClass="RepositoryOtherView" customModule="Training" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGV-Mn-r17" userLabel="Language" customClass="RepositoryDataView" customModule="Training" customModuleProvider="target">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="42"/>
                                                     </view>
                                                 </subviews>
@@ -174,11 +174,11 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rm-rG-fNF">
                                                 <rect key="frame" x="0.0" y="42" width="414" height="42"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-gu-VH7" userLabel="Issue" customClass="RepositoryOtherView" customModule="Training" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-gu-VH7" userLabel="Issue" customClass="RepositoryDataView" customModule="Training" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="42"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mk-zR-riM" userLabel="Date" customClass="RepositoryOtherView" customModule="Training" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mk-zR-riM" userLabel="Date" customClass="RepositoryDataView" customModule="Training" customModuleProvider="target">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="42"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
