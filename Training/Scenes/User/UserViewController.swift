@@ -25,7 +25,6 @@ final class UserViewController: UIViewController{
         didSet {
             tableView.register(R.nib.userRepoTableViewCell)
             tableView.dataSource = dataSource
-            tableView.delegate = self
         }
     }
     

@@ -155,6 +155,9 @@
                                         <outlet property="userRepoHeaderView" destination="mLS-B9-AyV" id="aU8-N5-Fi0"/>
                                     </connections>
                                 </view>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Ceb-LR-vs0"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
