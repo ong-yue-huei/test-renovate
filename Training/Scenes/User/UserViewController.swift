@@ -20,8 +20,8 @@ final class UserViewController: UIViewController{
     private typealias TableViewDataSource = UITableViewDiffableDataSource<String, Repo>
     private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Repo>
     
-    @IBOutlet var userTableHeaderView: UserTableHeaderView!
-    @IBOutlet var tableView: UITableView! {
+    @IBOutlet private var userTableHeaderView: UserTableHeaderView!
+    @IBOutlet private var tableView: UITableView! {
         didSet {
             tableView.register(R.nib.userRepoTableViewCell)
             tableView.dataSource = dataSource
