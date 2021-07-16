@@ -23,7 +23,6 @@ final class UserViewController: UIViewController{
         return cell
     }
     
-    private let username: String
     private let viewModel: ViewModel
     private var cancellables: Set<AnyCancellable> = []
     
@@ -31,7 +30,7 @@ final class UserViewController: UIViewController{
         super.viewDidLoad()
         setupUI()
         bind()
-        viewModel.send(action: .fetch(username: username))
+        viewModel.send(action: .fetch)
     }
     
     // MARK: - Initializer
@@ -39,9 +38,8 @@ final class UserViewController: UIViewController{
     @available(*, unavailable)
     required init?(coder: NSCoder) { fatalError() }
 
-    private init(coder: NSCoder, viewModel: ViewModel, username: String) {
+    private init(coder: NSCoder, viewModel: ViewModel) {
         self.viewModel = viewModel
-        self.username = username
         super.init(coder: coder)!
     }
 }
@@ -49,9 +47,14 @@ final class UserViewController: UIViewController{
 // MARK: - Instantiate
 
 extension UserViewController {
-    static func instantiate(viewModel: ViewModel = UserViewModel().eraseToAnyViewModel(), username: String) -> Self {
+    static func instantiate(argument: ViewModel.Argument) -> Self {
+       let viewModel = UserViewModel(argument: argument)
+       return instantiate(viewModel: viewModel.eraseToAnyViewModel())
+    }
+    
+    static func instantiate(viewModel: ViewModel) -> Self {
         R.storyboard.user().instantiateInitialViewController { coder in
-            Self(coder: coder, viewModel: viewModel, username: username)
+            Self(coder: coder, viewModel: viewModel)
         }!
     }
 }
@@ -63,7 +66,7 @@ private extension UserViewController {
         tableView.register(R.nib.userRepoTableViewCell)
         tableView.dataSource = dataSource
         tableView.tableFooterView = UIView(frame: .zero)
-        title = "\(username)'s Repository List"
+        title = "\(viewModel.argument.username)'s Repository List"
     }
     
     func bind() {

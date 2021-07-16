@@ -17,7 +17,7 @@ final class RepositoryViewController: UIViewController {
     @IBOutlet private var eventLabel: UILabel!
     @IBOutlet private var actorName: UILabel!
     @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
-        let viewController = UserViewController.instantiate(username: viewModel.argument.event.actor.login)
+        let viewController = UserViewController.instantiate(argument: .init(username: viewModel.argument.event.actor.login))
         let navigationViewController = UINavigationController(rootViewController: viewController)
         navigationController?.present(navigationViewController, animated: true)
     }

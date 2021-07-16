@@ -14,6 +14,10 @@ final class UserViewModel: ViewModel {
         var getUserReposUseCase: GetUserReposUseCase = GetUserReposDefaultUseCase()
     }
     
+    struct Argument {
+        let username: String
+    }
+    
     struct Section: Equatable {
          let type: SectionType
          let cells: [Repo]
@@ -24,7 +28,7 @@ final class UserViewModel: ViewModel {
      }
 
     enum Action {
-        case fetch(username: String)
+        case fetch
     }
     
     struct State {
@@ -32,28 +36,30 @@ final class UserViewModel: ViewModel {
         var sections: [Section] = []
     }
     
+    let argument: Argument
     var state: State { stateSubject.value }
     let stateSubject = CurrentValueSubject<State, Never>(.init())
     var statePublisher: AnyPublisher<State, Never> { stateSubject.eraseToAnyPublisher() }
     private var cancellables: Set<AnyCancellable> = []
     private let dependency: Dependency
     
-    init(dependency: Dependency = .init()) {
+    init(argument: Argument, dependency: Dependency = .init()) {
+        self.argument = argument
         self.dependency = dependency
     }
     
     func send(action: Action) {
         switch action {
-        case .fetch(let username):
-            fetchEvents(username)
+        case .fetch:
+            fetchEvents()
         }
     }
 }
 
 private extension UserViewModel {
-    func fetchEvents(_ username: String) {
-        dependency.getUserUseCase.perform(username: username)
-            .zip(dependency.getUserReposUseCase.perform(username: username))
+    func fetchEvents() {
+        dependency.getUserUseCase.perform(username: argument.username)
+            .zip(dependency.getUserReposUseCase.perform(username: argument.username))
             .sink(receiveCompletion: { completion in
                 switch completion{
                     case .failure(let error):

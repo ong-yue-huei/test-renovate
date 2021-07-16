@@ -42,9 +42,9 @@
 		F911C742269C37CB000190E4 /* UserTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911C741269C37CB000190E4 /* UserTableHeaderView.swift */; };
 		F93994172698649700B549B0 /* RepositoryOtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93994162698649700B549B0 /* RepositoryOtherView.swift */; };
 		F93994192698761300B549B0 /* RepositoryOtherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93994182698761300B549B0 /* RepositoryOtherView.xib */; };
-		F97EEFE726A00A5C00F799A2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */; };
-		F97EEFE526A003DB00F799A2 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE426A003DB00F799A2 /* RepositoryViewModel.swift */; };
 		F97EEFE3269FEDA100F799A2 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE2269FEDA100F799A2 /* MainViewModel.swift */; };
+		F97EEFE526A003DB00F799A2 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE426A003DB00F799A2 /* RepositoryViewModel.swift */; };
+		F97EEFE726A00A5C00F799A2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */; };
 		F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F99ADFE62696EE740033CFF5 /* Nuke */; };
 		F99ADFEF2697E1CA0033CFF5 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */; };
 		F99ADFF12697E1E00033CFF5 /* Repository.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F99ADFF02697E1E00033CFF5 /* Repository.storyboard */; };
@@ -119,9 +119,9 @@
 		F911C741269C37CB000190E4 /* UserTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableHeaderView.swift; sourceTree = "<group>"; };
 		F93994162698649700B549B0 /* RepositoryOtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryOtherView.swift; sourceTree = "<group>"; };
 		F93994182698761300B549B0 /* RepositoryOtherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryOtherView.xib; sourceTree = "<group>"; };
-		F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
-		F97EEFE426A003DB00F799A2 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		F97EEFE2269FEDA100F799A2 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F97EEFE426A003DB00F799A2 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		F99ADFF02697E1E00033CFF5 /* Repository.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repository.storyboard; sourceTree = "<group>"; };
 		F99ADFF2269807F30033CFF5 /* GetRepoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepoRequest.swift; sourceTree = "<group>"; };
@@ -360,8 +360,8 @@
 		F911C72F269BDA22000190E4 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */,
 				F911C731269BDA55000190E4 /* UserViewController.swift */,
+				F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */,
 				F911C733269BDA69000190E4 /* User.storyboard */,
 				F911C730269BDA35000190E4 /* Subviews */,
 			);
