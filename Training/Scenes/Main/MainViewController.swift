@@ -18,7 +18,6 @@ final class MainViewController: UIViewController {
         didSet {
             tableView.register(R.nib.eventTableViewCell)
             tableView.dataSource = dataSource
-            tableView.delegate = self
             tableView.tableHeaderView = UIView(frame: .zero)
             tableView.tableFooterView = UIView(frame: .zero)
         }

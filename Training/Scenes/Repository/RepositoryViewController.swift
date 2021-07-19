@@ -9,6 +9,7 @@ import UIKit
 import Nuke
 
 final class RepositoryViewController: UIViewController {
+
     struct Dependency {
         var getRepoUseCase: GetRepoUseCase = GetRepoDefaultUseCase()
     }
@@ -27,7 +28,7 @@ final class RepositoryViewController: UIViewController {
     @IBOutlet private var actorNameLabel: UILabel!
     @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
     }
-    
+
     @IBOutlet private var repoOwnerImageView: UIImageView! {
         didSet {
             repoOwnerImageView.layer.cornerRadius = repoOwnerImageView.frame.size.width * 0.5
