@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class UserViewController: UIViewController{
+final class UserViewController: UIViewController {
     struct Dependency {
         var getUserUseCase: GetUserUseCase = GetUserDefaultUseCase()
         var getUserReposUseCase: GetUserReposUseCase = GetUserReposDefaultUseCase()
@@ -21,12 +21,11 @@ final class UserViewController: UIViewController{
     private typealias TableViewDataSource = UITableViewDiffableDataSource<String, Repo>
     private typealias TableViewSnapShot = NSDiffableDataSourceSnapshot<String, Repo>
     
-    @IBOutlet var userTableHeaderView: UserTableHeaderView!
-    @IBOutlet var tableView: UITableView! {
+    @IBOutlet private var userTableHeaderView: UserTableHeaderView!
+    @IBOutlet private var tableView: UITableView! {
         didSet {
             tableView.register(R.nib.userRepoTableViewCell)
             tableView.dataSource = dataSource
-            tableView.delegate = self
             tableView.tableFooterView = UIView(frame: .zero)
         }
     }
