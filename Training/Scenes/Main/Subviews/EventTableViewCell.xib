@@ -37,7 +37,6 @@
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" name="Surface"/>
                 <constraints>
                     <constraint firstItem="22f-HB-7Dc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Ke5-JS-NkI"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mOh-MB-ou1" secondAttribute="trailing" constant="20" id="LiQ-8E-Cx5"/>
@@ -52,6 +51,7 @@
                     <constraint firstItem="KZd-36-cIs" firstAttribute="leading" secondItem="mOh-MB-ou1" secondAttribute="leading" id="zMg-iw-zJA"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="Surface"/>
             <connections>
                 <outlet property="descriptionLabel" destination="KZd-36-cIs" id="x2e-Z8-1sd"/>
                 <outlet property="label" destination="mOh-MB-ou1" id="CWQ-fC-vsE"/>
