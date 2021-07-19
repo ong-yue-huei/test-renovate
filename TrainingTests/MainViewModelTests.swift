@@ -1,5 +1,5 @@
 //
-//  MainViewModelTest.swift
+//  MainViewModelTests.swift
 //  TrainingTests
 //
 //  Created by Ong Yue Huei on 19/07/2021.
@@ -9,7 +9,7 @@ import Combine
 @testable import Training
 import XCTest
 
-class MainViewModelTest: XCTestCase {
+class MainViewModelTests: XCTestCase {
     private var getEventsUseCase = GetEventsUseCaseMock()
     private lazy var dependency = MainViewModel.Dependency(getEventsUseCase: getEventsUseCase)
    
@@ -48,7 +48,7 @@ class MainViewModelTest: XCTestCase {
 
 // MARK: - MainViewModelTest
 
-private extension MainViewModelTest {
+private extension MainViewModelTests {
     func createViewModel() -> MainViewModel {
         .init(dependency: dependency)
     }

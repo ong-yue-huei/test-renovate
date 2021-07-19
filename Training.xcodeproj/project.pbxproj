@@ -46,7 +46,7 @@
 		F97EEFE526A003DB00F799A2 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE426A003DB00F799A2 /* RepositoryViewModel.swift */; };
 		F97EEFE726A00A5C00F799A2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */; };
 		F97EF00426A5143900F799A2 /* GetEventsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EF00326A5143900F799A2 /* GetEventsUseCaseMock.swift */; };
-		F97EF00626A5147100F799A2 /* MainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EF00526A5147100F799A2 /* MainViewModelTest.swift */; };
+		F97EF00626A5147100F799A2 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EF00526A5147100F799A2 /* MainViewModelTests.swift */; };
 		F97EF00926A519CC00F799A2 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EF00826A519CC00F799A2 /* Stubs.swift */; };
 		F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F99ADFE62696EE740033CFF5 /* Nuke */; };
 		F99ADFEF2697E1CA0033CFF5 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */; };
@@ -126,7 +126,7 @@
 		F97EEFE426A003DB00F799A2 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		F97EF00326A5143900F799A2 /* GetEventsUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsUseCaseMock.swift; sourceTree = "<group>"; };
-		F97EF00526A5147100F799A2 /* MainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTest.swift; sourceTree = "<group>"; };
+		F97EF00526A5147100F799A2 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		F97EF00826A519CC00F799A2 /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
 		F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		F99ADFF02697E1E00033CFF5 /* Repository.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repository.storyboard; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 			children = (
 				F97EF00126A513C900F799A2 /* Domain */,
 				F97EF00726A519AB00F799A2 /* TestUtils */,
-				F97EF00526A5147100F799A2 /* MainViewModelTest.swift */,
+				F97EF00526A5147100F799A2 /* MainViewModelTests.swift */,
 				A72D03F6264582EA00DA791D /* TrainingTests.swift */,
 				A72D03F8264582EA00DA791D /* Info.plist */,
 			);
@@ -745,7 +745,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72D03F7264582EA00DA791D /* TrainingTests.swift in Sources */,
-				F97EF00626A5147100F799A2 /* MainViewModelTest.swift in Sources */,
+				F97EF00626A5147100F799A2 /* MainViewModelTests.swift in Sources */,
 				F97EF00426A5143900F799A2 /* GetEventsUseCaseMock.swift in Sources */,
 				F97EF00926A519CC00F799A2 /* Stubs.swift in Sources */,
 			);
