@@ -12,28 +12,28 @@ import Combine
 final class RepositoryViewController: UIViewController {
     typealias ViewModel = RepositoryViewModel.TypeErased
     
-    @IBOutlet private var actorImage: UIImageView!
-    @IBOutlet private var eventBackground: UIView!
+    @IBOutlet private var actorImageView: UIImageView!
+    @IBOutlet private var eventBackgroundView: UIView!
     @IBOutlet private var eventLabel: UILabel!
-    @IBOutlet private var actorName: UILabel!
+    @IBOutlet private var actorNameLabel: UILabel!
     @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
         let viewController = UserViewController.instantiate(argument: .init(username: viewModel.argument.event.actor.login))
         let navigationViewController = UINavigationController(rootViewController: viewController)
         navigationController?.present(navigationViewController, animated: true)
     }
-    
-    @IBOutlet private var repoOwnerImage: UIImageView!
-    @IBOutlet private var repoName: UILabel!
-    @IBOutlet private var repoDescription: UILabel!
-    
+
+    @IBOutlet private var repoOwnerImageView: UIImageView!
+    @IBOutlet private var repoNameLabel: UILabel!
+    @IBOutlet private var repoDescriptionLabel: UILabel!
+  
     @IBOutlet private var stargazersView: RepositoryCountView!
     @IBOutlet private var watchersView: RepositoryCountView!
     @IBOutlet private var forksView: RepositoryCountView!
     
-    @IBOutlet private var privateView: RepositoryOtherView!
-    @IBOutlet private var languageView: RepositoryOtherView!
-    @IBOutlet private var issueView: RepositoryOtherView!
-    @IBOutlet private var dateView: RepositoryOtherView!
+    @IBOutlet private var privateView: RepositoryDataView!
+    @IBOutlet private var languageView: RepositoryDataView!
+    @IBOutlet private var issueView: RepositoryDataView!
+    @IBOutlet private var dateView: RepositoryDataView!
 
     private let viewModel: ViewModel
     private var cancellables: Set<AnyCancellable> = []
@@ -75,9 +75,9 @@ extension RepositoryViewController {
 
 private extension RepositoryViewController {
     func setupUI() {
-        actorImage.layer.cornerRadius = actorImage.frame.size.width * 0.5
-        eventBackground.layer.cornerRadius = 3;
-        repoOwnerImage.layer.cornerRadius = repoOwnerImage.frame.size.width * 0.5
+        actorImageView.layer.cornerRadius = actorImage.frame.size.width * 0.5
+        eventBackgroundView.layer.cornerRadius = 3;
+        repoOwnerImageView.layer.cornerRadius = repoOwnerImage.frame.size.width * 0.5
     }
     
     func bind() {
@@ -91,13 +91,14 @@ private extension RepositoryViewController {
     func updateRepository(repo: Repo) {
         navigationItem.title = repo.fullName
         
-        Nuke.loadImage(with: viewModel.argument.event.actor.avatarUrl, into: actorImage)
+
+        Nuke.loadImage(with: viewModel.argument.event.actor.avatarUrl, into: actorImageView)
         eventLabel.text = viewModel.argument.event.type
-        actorName.text = viewModel.argument.event.actor.login
+        actorNameLabel.text = viewModel.argument.event.actor.login
         
-        Nuke.loadImage(with: repo.owner.avatarURL, into: repoOwnerImage)
-        repoName.text = repo.name
-        repoDescription.text = repo.description
+        Nuke.loadImage(with: repo.owner.avatarURL, into: repoOwnerImageView)
+        repoNameLabel.text = repo.name
+        repoDescriptionLabel.text = repo.description
         
         stargazersView.setInfo(type: .stargazers, count: repo.stargazersCount)
         watchersView.setInfo(type: .watchers, count: repo.watchersCount)

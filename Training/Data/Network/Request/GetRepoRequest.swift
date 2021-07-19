@@ -9,10 +9,11 @@ import Alamofire
 
 struct GetRepoRequest: BaseRequest {
     typealias Response = Repo
-    var path: String = "/repos/"
-    var method: HTTPMethod = .get
+    var path: String { "/repos/\(ownerRepo)" }
+    let method: HTTPMethod = .get
+    let ownerRepo: String
 
     init(ownerRepo: String) {
-        path += ownerRepo
+        self.ownerRepo = ownerRepo
     }
 }
