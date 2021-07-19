@@ -26,6 +26,16 @@ class RepositoryViewModelTests: XCTestCase {
         XCTAssertTrue(getRepoUseCase.callArgs.isEmpty)
         XCTAssertNil(vm.state.repo)
     }
+    
+    func test_fetch() {
+        let vm = createViewModel()
+        let repoResponse = Repo.stub()
+        getRepoUseCase.publisher = Result.Publisher(repoResponse).eraseToAnyPublisher()
+
+        vm.send(action: .fetch)
+        XCTAssertEqual(getRepoUseCase.callArgs, [.perform(ownerRepo: Event.stub()[0].repo.name)])
+        XCTAssertEqual(vm.state.repo, repoResponse)
+    }
 }
 
 // MARK: - RepositoryViewModelTest

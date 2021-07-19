@@ -31,3 +31,34 @@ extension Event {
     }
 }
 
+extension Repo {
+    static func stub(
+        id: Int32 = 307825586,
+        name: String = "carmilea",
+        fullName: String = "carmilea/carmilea",
+        isPrivate: Bool = false,
+        owner: Owner = .init(id: 38557922, avatarURL: URL(string: "https://avatars.githubusercontent.com/u/38557922?v=4")!),
+        description: String = "",
+        updatedAt: Date = Date(timeIntervalSinceReferenceDate: -123456000.0),
+        stargazersCount: Int = 0,
+        watchersCount: Int = 0,
+        language: String = "",
+        forksCount: Int = 0,
+        openIssuesCount: Int = 0
+    ) -> Self {
+        .init(
+            id: id,
+            name: name,
+            fullName: fullName,
+            isPrivate: isPrivate,
+            owner: owner,
+            description: description,
+            updatedAt: updatedAt,
+            stargazersCount: stargazersCount,
+            watchersCount: watchersCount,
+            language: language,
+            forksCount: forksCount,
+            openIssuesCount: openIssuesCount
+        )
+    }
+}
