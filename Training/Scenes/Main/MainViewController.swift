@@ -81,3 +81,14 @@ extension MainViewController {
         }!
     }
 }
+
+// MARK: - UITableViewDelegate
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let viewController = RepositoryViewController.instantiate()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
