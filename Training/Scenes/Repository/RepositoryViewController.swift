@@ -9,7 +9,6 @@ import UIKit
 import Nuke
 
 final class RepositoryViewController: UIViewController {
-
     struct Dependency {
         var getRepoUseCase: GetRepoUseCase = GetRepoDefaultUseCase()
     }
@@ -19,6 +18,7 @@ final class RepositoryViewController: UIViewController {
             actorImageView.layer.cornerRadius = actorImageView.frame.size.width * 0.5
         }
     }
+
     @IBOutlet private var eventBackgroundView: UIView! {
         didSet {
             eventBackgroundView.layer.cornerRadius = 3;
@@ -27,6 +27,9 @@ final class RepositoryViewController: UIViewController {
     @IBOutlet private var eventLabel: UILabel!
     @IBOutlet private var actorNameLabel: UILabel!
     @IBAction private func detailButtonTouchUpInside(_ sender: Any) {
+        let viewController = UserViewController.instantiate(username: event.actor.login)
+        let navigationViewController = UINavigationController(rootViewController: viewController)
+        navigationController?.present(navigationViewController, animated: true)
     }
 
     @IBOutlet private var repoOwnerImageView: UIImageView! {

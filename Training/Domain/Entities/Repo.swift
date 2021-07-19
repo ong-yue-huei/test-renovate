@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Repo: Decodable {
+struct Repo: Decodable, Hashable {
     let id: Int32
     let name: String
     let fullName: String
@@ -19,6 +19,14 @@ struct Repo: Decodable {
     let language: String?
     let forksCount: Int
     let openIssuesCount: Int
+    
+    static func ==(lhs: Repo, rhs: Repo) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
