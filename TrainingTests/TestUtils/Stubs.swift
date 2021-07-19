@@ -10,17 +10,17 @@ import Foundation
 
 extension Event {
     static func stub(
-        id: String = "17189128053",
+        id: String = "17189128028",
         type: String = "PushEvent",
         actor: Actor = .init(
-            id: 41898282,
-            login: "github-actions[bot]",
-            displayLogin: "github-actions",
-            avatarUrl: URL(string: "https://avatars.githubusercontent.com/u/41898282?")!),
+            id: 59313332,
+            login: "atomjj",
+            displayLogin: "github-atomjj",
+            avatarUrl: URL(string: "https://avatars.githubusercontent.com/u/59313332?")!),
         repo: RepositorySummary = .init(
-            id: 307825586,
-            name: "carmilea/carmilea",
-            url:URL(string: "https://api.github.com/repos/carmilea/carmilea")!)
+            id: 256442575,
+            name: "atomjj/nanopi-openwrt",
+            url:URL(string: "https://api.github.com/repos/atomjj/nanopi-openwrt")!)
     ) -> [Self] {
         [.init(
             id: id,
@@ -33,18 +33,18 @@ extension Event {
 
 extension Repo {
     static func stub(
-        id: Int32 = 307825586,
-        name: String = "carmilea",
-        fullName: String = "carmilea/carmilea",
+        id: Int32 = 256442575,
+        name: String = "nanopi-openwrt",
+        fullName: String = "atomjj/nanopi-openwrt",
         isPrivate: Bool = false,
-        owner: Owner = .init(id: 38557922, avatarURL: URL(string: "https://avatars.githubusercontent.com/u/38557922?v=4")!),
-        description: String = "",
+        owner: Owner = .init(id: 59313332, avatarURL: URL(string: "https://avatars.githubusercontent.com/u/59313332?v=4")!),
+        description: String = "Openwrt for Nanopi R1S R2S R4S 香橙派 R1 Plus 固件编译 纯净版与大杂烩",
         updatedAt: Date = Date(timeIntervalSinceReferenceDate: -123456000.0),
-        stargazersCount: Int = 0,
-        watchersCount: Int = 0,
-        language: String = "",
-        forksCount: Int = 0,
-        openIssuesCount: Int = 0
+        stargazersCount: Int = 2507,
+        watchersCount: Int = 2507,
+        language: String = "Shell",
+        forksCount: Int = 1178,
+        openIssuesCount: Int = 373
     ) -> Self {
         .init(
             id: id,
