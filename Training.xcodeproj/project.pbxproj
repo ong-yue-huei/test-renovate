@@ -45,6 +45,8 @@
 		F97EEFE3269FEDA100F799A2 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE2269FEDA100F799A2 /* MainViewModel.swift */; };
 		F97EEFE526A003DB00F799A2 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE426A003DB00F799A2 /* RepositoryViewModel.swift */; };
 		F97EEFE726A00A5C00F799A2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */; };
+		F97EF00426A5143900F799A2 /* GetEventsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EF00326A5143900F799A2 /* GetEventsUseCaseMock.swift */; };
+		F97EF00626A5147100F799A2 /* MainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EF00526A5147100F799A2 /* MainViewModelTest.swift */; };
 		F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F99ADFE62696EE740033CFF5 /* Nuke */; };
 		F99ADFEF2697E1CA0033CFF5 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */; };
 		F99ADFF12697E1E00033CFF5 /* Repository.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F99ADFF02697E1E00033CFF5 /* Repository.storyboard */; };
@@ -122,6 +124,8 @@
 		F97EEFE2269FEDA100F799A2 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F97EEFE426A003DB00F799A2 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		F97EEFE626A00A5C00F799A2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		F97EF00326A5143900F799A2 /* GetEventsUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsUseCaseMock.swift; sourceTree = "<group>"; };
+		F97EF00526A5147100F799A2 /* MainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTest.swift; sourceTree = "<group>"; };
 		F99ADFEE2697E1CA0033CFF5 /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		F99ADFF02697E1E00033CFF5 /* Repository.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repository.storyboard; sourceTree = "<group>"; };
 		F99ADFF2269807F30033CFF5 /* GetRepoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepoRequest.swift; sourceTree = "<group>"; };
@@ -226,8 +230,10 @@
 		A72D03F5264582EA00DA791D /* TrainingTests */ = {
 			isa = PBXGroup;
 			children = (
+				F97EF00126A513C900F799A2 /* Domain */,
 				A72D03F6264582EA00DA791D /* TrainingTests.swift */,
 				A72D03F8264582EA00DA791D /* Info.plist */,
+				F97EF00526A5147100F799A2 /* MainViewModelTest.swift */,
 			);
 			path = TrainingTests;
 			sourceTree = "<group>";
@@ -376,6 +382,22 @@
 				F911C741269C37CB000190E4 /* UserTableHeaderView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		F97EF00126A513C900F799A2 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F97EF00226A513D300F799A2 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F97EF00226A513D300F799A2 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				F97EF00326A5143900F799A2 /* GetEventsUseCaseMock.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		F99ADFE82697D4360033CFF5 /* Repository */ = {
@@ -712,6 +734,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72D03F7264582EA00DA791D /* TrainingTests.swift in Sources */,
+				F97EF00626A5147100F799A2 /* MainViewModelTest.swift in Sources */,
+				F97EF00426A5143900F799A2 /* GetEventsUseCaseMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
