@@ -11,23 +11,20 @@ import XCTest
 
 class MainViewModelTest: XCTestCase {
     private var getEventsUseCase = GetEventsUseCaseMock()
-    private lazy var dependency = MainViewModel.Dependency(
-        getEventsUseCase: getEventsUseCase
-    )
-    var sut: MainViewModel!
+    private lazy var dependency = MainViewModel.Dependency(getEventsUseCase: getEventsUseCase)
+   
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = MainViewModel()
     }
 
     override func tearDownWithError() throws {
-        sut = nil
         try super.tearDownWithError()
     }
 
     func test_init() {
         let vm = createViewModel()
-        XCTAssertEqual(vm.state.sections, [])
+        XCTAssertTrue(getEventsUseCase.callArgs.isEmpty)
+        XCTAssertTrue(vm.state.sections.isEmpty)
     }
     
     func testExample() throws {
