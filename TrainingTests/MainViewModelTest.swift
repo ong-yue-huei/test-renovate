@@ -27,6 +27,24 @@ class MainViewModelTest: XCTestCase {
         XCTAssertTrue(vm.state.sections.isEmpty)
     }
     
+    func test_fetch() {
+        let vm = createViewModel()
+        let eventResponse = Event.stub()
+        getEventsUseCase.publisher = Result.Publisher(eventResponse).eraseToAnyPublisher()
+
+        vm.send(action: .fetch)
+        XCTAssertEqual(getEventsUseCase.callArgs, [.perform(page: 1)])
+        XCTAssertEqual(
+            vm.state.sections,
+            [
+                .init(
+                    type: .events,
+                    cells: [eventResponse[0]]
+                )
+            ]
+        )
+    }
+    
     func testExample() throws {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -39,20 +57,5 @@ class MainViewModelTest: XCTestCase {
 private extension MainViewModelTest {
     func createViewModel() -> MainViewModel {
         .init(dependency: dependency)
-    }
-    
-    func createEvent() -> [Event] {
-        return [Event(
-                    id: "",
-                    type: "",
-                    actor: Event.Actor(
-                        id: 0,
-                        login: "",
-                        displayLogin: "",
-                        avatarUrl: URL(string: "https://avatars.githubusercontent.com/u/41898282?")!),
-                    repo: RepositorySummary(
-                        id: 0,
-                        name: "",
-                        url:URL(string: "https://avatars.githubusercontent.com/u/41898282?")!))]
     }
 }
