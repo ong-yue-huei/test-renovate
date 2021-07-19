@@ -32,6 +32,28 @@ class UserViewModelTests: XCTestCase {
         XCTAssertTrue(vm.state.sections.isEmpty)
         XCTAssertNil(vm.state.user)
     }
+    
+    func test_fetch() {
+        let vm = createViewModel()
+        let userResponse = User.stub()
+        let userReposResponse = [Repo.stub(id: 1), Repo.stub(id: 2)]
+        getUserUseCase.publisher = Result.Publisher(userResponse).eraseToAnyPublisher()
+        getUserReposUseCase.publisher = Result.Publisher(userReposResponse).eraseToAnyPublisher()
+        
+        vm.send(action: .fetch)
+        XCTAssertEqual(getUserUseCase.callArgs, [.perform(username: Event.stub()[0].actor.login)])
+        XCTAssertEqual(getUserReposUseCase.callArgs, [.perform(username: Event.stub()[0].actor.login)])
+        XCTAssertEqual(vm.state.user, userResponse)
+        XCTAssertEqual(
+            vm.state.sections,
+            [
+                .init(
+                    type: .events,
+                    cells: userReposResponse
+                )
+            ]
+        )
+    }
 }
 
 // MARK: - UserViewModelTests

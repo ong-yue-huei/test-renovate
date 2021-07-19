@@ -62,3 +62,23 @@ extension Repo {
         )
     }
 }
+
+extension User {
+    static func stub(
+        id: Int64 = 59313332,
+        login: String = "atomjj",
+        avatarUrl: URL = URL(string: "https://avatars.githubusercontent.com/u/59313332?v=4")!,
+        name: String? = "",
+        followers: Int = 0,
+        following: Int = 0
+    ) -> Self {
+        .init(
+            id: id,
+            login: login,
+            avatarUrl: avatarUrl,
+            name: name,
+            followers: followers,
+            following: following
+        )
+    }
+}
