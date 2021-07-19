@@ -24,6 +24,14 @@ class UserViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         try super.tearDownWithError()
     }
+
+    func test_init() {
+        let vm = createViewModel()
+        XCTAssertTrue(getUserUseCase.callArgs.isEmpty)
+        XCTAssertTrue(getUserReposUseCase.callArgs.isEmpty)
+        XCTAssertTrue(vm.state.sections.isEmpty)
+        XCTAssertNil(vm.state.user)
+    }
 }
 
 // MARK: - UserViewModelTests
