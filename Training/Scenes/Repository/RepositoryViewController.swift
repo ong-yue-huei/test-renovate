@@ -7,6 +7,7 @@
 
 import UIKit
 import Nuke
+import Combine
 
 final class RepositoryViewController: UIViewController {
     struct Dependency {
@@ -51,6 +52,7 @@ final class RepositoryViewController: UIViewController {
 
     private let dependency: Dependency
     private let event: Event
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,14 +85,18 @@ extension RepositoryViewController {
 
 private extension RepositoryViewController {
     func fetchEvents() {
-        dependency.getRepoUseCase.perform(ownerRepo: event.repo.name) { [weak self] result in
-            switch result {
-            case .success(let repo):
-                self?.updateRepository(repo: repo)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        dependency.getRepoUseCase.perform(ownerRepo: event.repo.name)
+            .sink(receiveCompletion: { completion in
+                switch completion{
+                    case .failure(let error):
+                        print(error)
+                    case .finished:
+                        print("Success")
+                }
+            }, receiveValue: { [weak self] result in
+                self?.updateRepository(repo: result)
+            })
+            .store(in: &cancellables)
     }
     
     func updateRepository(repo: Repo) {

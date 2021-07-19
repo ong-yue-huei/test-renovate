@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class UserViewController: UIViewController {
     struct Dependency {
@@ -25,6 +26,7 @@ final class UserViewController: UIViewController {
         didSet {
             tableView.register(R.nib.userRepoTableViewCell)
             tableView.dataSource = dataSource
+            tableView.tableFooterView = UIView(frame: .zero)
         }
     }
     
@@ -36,12 +38,12 @@ final class UserViewController: UIViewController {
     
     private let dependency: Dependency
     private let username: String
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "\(username)'s Repository List"
-        fetchUser()
-        fetchUserRepos()
+        fetchUserAndUserRepos()
     }
     
     // MARK: - Initializer
@@ -69,26 +71,21 @@ extension UserViewController {
 // MARK: - Private
 
 private extension UserViewController {
-    func fetchUser() {
-        dependency.getUserUseCase.perform(username: username) { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.userTableHeaderView.setUser(user)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func fetchUserRepos() {
-        dependency.getUserReposUseCase.perform(username: username) { [weak self] result in
-            switch result {
-            case .success(let repos):
-                self?.updateTableViewDataSet(repos: repos)
-            case .failure(let error):
-                print(error)
-            }
-        }
+    func fetchUserAndUserRepos() {
+        dependency.getUserUseCase.perform(username: username)
+            .zip(dependency.getUserReposUseCase.perform(username: username))
+            .sink(receiveCompletion: { completion in
+                switch completion{
+                    case .failure(let error):
+                        print(error)
+                    case .finished:
+                        print("Success")
+                }
+            }, receiveValue: { [weak self] result in
+                self?.userTableHeaderView.setUser(result.0)
+                self?.updateTableViewDataSet(repos: result.1)
+            })
+            .store(in: &cancellables)
     }
     
     func updateTableViewDataSet(repos: [Repo]) {
