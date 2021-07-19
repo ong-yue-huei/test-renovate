@@ -52,8 +52,8 @@ final class MainViewController: UIViewController {
 
 // MARK: - Private
 
-extension MainViewController {
-    private func fetchEvents() {
+private extension MainViewController {
+    func fetchEvents() {
         dependency.getEventsUseCase.perform(page: 1) { [weak self] result in
             switch result {
             case .success(let events):
@@ -64,7 +64,7 @@ extension MainViewController {
         }
     }
 
-    private func updateTableViewDataSet(events: [Event]) {
+    func updateTableViewDataSet(events: [Event]) {
         var snapshot = TableViewSnapShot()
         snapshot.appendSections([Const.sectionIdentifier])
         snapshot.appendItems(events, toSection: Const.sectionIdentifier)
@@ -87,7 +87,9 @@ extension MainViewController {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let viewController = RepositoryViewController.instantiate()
+        
+        let event = dataSource.snapshot().itemIdentifiers(inSection: Const.sectionIdentifier)[indexPath.row]
+        let viewController = RepositoryViewController.instantiate(event)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
