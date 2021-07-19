@@ -20,6 +20,12 @@ class RepositoryViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         try super.tearDownWithError()
     }
+
+    func test_init() {
+        let vm = createViewModel()
+        XCTAssertTrue(getRepoUseCase.callArgs.isEmpty)
+        XCTAssertNil(vm.state.repo)
+    }
 }
 
 // MARK: - RepositoryViewModelTest
