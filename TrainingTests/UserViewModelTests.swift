@@ -34,15 +34,16 @@ class UserViewModelTests: XCTestCase {
     }
     
     func test_fetch() {
-        let vm = createViewModel()
+        let username = Event.stub().actor.login
+        let vm = createViewModel(argument: .init(username: username))
         let userResponse = User.stub()
-        let userReposResponse = [Repo.stub(id: 1), Repo.stub(id: 2)]
+        let userReposResponse: [Repo] = [.stub(), .stub(), .stub()]
         getUserUseCase.publisher = Result.Publisher(userResponse).eraseToAnyPublisher()
         getUserReposUseCase.publisher = Result.Publisher(userReposResponse).eraseToAnyPublisher()
         
         vm.send(action: .fetch)
-        XCTAssertEqual(getUserUseCase.callArgs, [.perform(username: Event.stub()[0].actor.login)])
-        XCTAssertEqual(getUserReposUseCase.callArgs, [.perform(username: Event.stub()[0].actor.login)])
+        XCTAssertEqual(getUserUseCase.callArgs, [.perform(username: username)])
+        XCTAssertEqual(getUserReposUseCase.callArgs, [.perform(username: username)])
         XCTAssertEqual(vm.state.user, userResponse)
         XCTAssertEqual(
             vm.state.sections,
@@ -68,6 +69,6 @@ private extension UserViewModelTests {
 
 private extension UserViewModel.Argument {
     static func stub() -> Self {
-        .init(username: Event.stub()[0].actor.login)
+        .init(username: Event.stub().actor.login)
     }
 }
