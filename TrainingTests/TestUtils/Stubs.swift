@@ -8,43 +8,79 @@
 import Foundation
 @testable import Training
 
+extension String {
+    static func stub() -> Self {
+        UUID().uuidString
+    }
+}
+
+extension Int {
+    static func stub() -> Self {
+        Int.random(in:100..<999)
+    }
+}
+
+extension Int64 {
+    static func stub() -> Self {
+        Int64(Int.stub())
+    }
+}
+
+extension Int32 {
+    static func stub() -> Self {
+        Int32(Int.stub())
+    }
+}
+
+extension Double {
+    static func stub() -> Self {
+        Double(-Int.stub())
+    }
+}
+
+extension URL {
+    static func stub() -> Self {
+        URL(string: .stub())!
+    }
+}
+
 extension Event {
     static func stub(
-        id: String = "17189128028",
-        type: String = "PushEvent",
+        id: String = .stub(),
+        type: String = .stub(),
         actor: Actor = .init(
-            id: 59313332,
-            login: "atomjj",
-            displayLogin: "github-atomjj",
-            avatarUrl: URL(string: "https://avatars.githubusercontent.com/u/59313332?")!),
+            id: .stub(),
+            login: .stub(),
+            displayLogin: .stub(),
+            avatarUrl: .stub()),
         repo: RepositorySummary = .init(
-            id: 256442575,
-            name: "atomjj/nanopi-openwrt",
-            url:URL(string: "https://api.github.com/repos/atomjj/nanopi-openwrt")!)
-    ) -> [Self] {
-        [.init(
+            id: .stub(),
+            name: .stub(),
+            url:.stub())
+    ) -> Self {
+        .init(
             id: id,
             type: type,
             actor: actor,
             repo: repo
-        )]
+        )
     }
 }
 
 extension Repo {
     static func stub(
-        id: Int32 = 256442575,
-        name: String = "nanopi-openwrt",
-        fullName: String = "atomjj/nanopi-openwrt",
+        id: Int32 = .stub(),
+        name: String = .stub(),
+        fullName: String = .stub(),
         isPrivate: Bool = false,
-        owner: Owner = .init(id: 59313332, avatarURL: URL(string: "https://avatars.githubusercontent.com/u/59313332?v=4")!),
-        description: String = "Openwrt for Nanopi R1S R2S R4S 香橙派 R1 Plus 固件编译 纯净版与大杂烩",
-        updatedAt: Date = Date(timeIntervalSinceReferenceDate: -123456000.0),
-        stargazersCount: Int = 2507,
-        watchersCount: Int = 2507,
-        language: String = "Shell",
-        forksCount: Int = 1178,
-        openIssuesCount: Int = 373
+        owner: Owner = .init(id: .stub(), avatarURL: .stub()),
+        description: String = .stub(),
+        updatedAt: Date = Date(timeIntervalSinceReferenceDate: .stub()),
+        stargazersCount: Int = .stub(),
+        watchersCount: Int = .stub(),
+        language: String = .stub(),
+        forksCount: Int = .stub(),
+        openIssuesCount: Int = .stub()
     ) -> Self {
         .init(
             id: id,

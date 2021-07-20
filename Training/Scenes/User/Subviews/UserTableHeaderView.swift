@@ -25,7 +25,8 @@ final class UserTableHeaderView: UIView {
         }
     }
     
-    @IBOutlet private var userHeaderView: UIView! {    didSet {
+    @IBOutlet private var userHeaderView: UIView! {    
+        didSet {
             userHeaderView.layer.borderWidth = 0.2
             userHeaderView.layer.borderColor = UIColor.lightGray.cgColor
         }

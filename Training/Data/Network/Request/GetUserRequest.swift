@@ -9,10 +9,11 @@ import Alamofire
 
 struct GetUserRequest: BaseRequest {
     typealias Response = User
-    var path: String = "/users/"
-    var method: HTTPMethod = .get
+    var path: String { "/users/\(username)" }
+    let method: HTTPMethod = .get
+    let username: String
 
     init(username: String) {
-        path += username
+        self.username = username
     }
 }
