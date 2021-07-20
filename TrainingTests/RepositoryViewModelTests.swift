@@ -43,6 +43,6 @@ private extension RepositoryViewModelTests {
 
 private extension RepositoryViewModel.Argument {
     static func stub() -> Self {
-        .init(event: Event.stub()[0])
+        .init(event: Event.stub())
     }
 }

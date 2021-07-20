@@ -26,6 +26,18 @@ extension Int64 {
     }
 }
 
+extension Int32 {
+    static func stub() -> Self {
+        Int32(Int.stub())
+    }
+}
+
+extension Double {
+    static func stub() -> Self {
+        Double(-Int.stub())
+    }
+}
+
 extension URL {
     static func stub() -> Self {
         URL(string: .stub())!
@@ -57,18 +69,18 @@ extension Event {
 
 extension Repo {
     static func stub(
-        id: Int32 = 307825586,
-        name: String = "carmilea",
-        fullName: String = "carmilea/carmilea",
+        id: Int32 = .stub(),
+        name: String = .stub(),
+        fullName: String = .stub(),
         isPrivate: Bool = false,
-        owner: Owner = .init(id: 38557922, avatarURL: URL(string: "https://avatars.githubusercontent.com/u/38557922?v=4")!),
-        description: String = "",
-        updatedAt: Date = Date(timeIntervalSinceReferenceDate: -123456000.0),
-        stargazersCount: Int = 0,
-        watchersCount: Int = 0,
-        language: String = "",
-        forksCount: Int = 0,
-        openIssuesCount: Int = 0
+        owner: Owner = .init(id: .stub(), avatarURL: .stub()),
+        description: String = .stub(),
+        updatedAt: Date = Date(timeIntervalSinceReferenceDate: .stub()),
+        stargazersCount: Int = .stub(),
+        watchersCount: Int = .stub(),
+        language: String = .stub(),
+        forksCount: Int = .stub(),
+        openIssuesCount: Int = .stub()
     ) -> Self {
         .init(
             id: id,
