@@ -13,14 +13,6 @@ class MainViewModelTests: XCTestCase {
     private var getEventsUseCase = GetEventsUseCaseMock()
     private lazy var dependency = MainViewModel.Dependency(getEventsUseCase: getEventsUseCase)
    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
-
     func test_init() {
         let vm = createViewModel()
         XCTAssertTrue(getEventsUseCase.callArgs.isEmpty)
