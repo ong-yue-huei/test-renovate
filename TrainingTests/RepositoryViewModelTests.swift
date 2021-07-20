@@ -20,12 +20,13 @@ class RepositoryViewModelTests: XCTestCase {
     }
     
     func test_fetch() {
-        let vm = createViewModel()
+        let event = Event.stub()
+        let vm = createViewModel(argument: .init(event: event))
         let repoResponse = Repo.stub()
         getRepoUseCase.publisher = Result.Publisher(repoResponse).eraseToAnyPublisher()
 
         vm.send(action: .fetch)
-        XCTAssertEqual(getRepoUseCase.callArgs, [.perform(ownerRepo: Event.stub()[0].repo.name)])
+        XCTAssertEqual(getRepoUseCase.callArgs, [.perform(ownerRepo: event.repo.name)])
         XCTAssertEqual(vm.state.repo, repoResponse)
     }
 }
