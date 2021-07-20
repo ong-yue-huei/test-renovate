@@ -13,14 +13,6 @@ class RepositoryViewModelTests: XCTestCase {
     private var getRepoUseCase = GetRepoUseCaseMock()
     private lazy var dependency = RepositoryViewModel.Dependency(getRepoUseCase: getRepoUseCase)
    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
-
     func test_init() {
         let vm = createViewModel()
         XCTAssertTrue(getRepoUseCase.callArgs.isEmpty)
