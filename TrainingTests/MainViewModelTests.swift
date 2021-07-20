@@ -13,14 +13,6 @@ class MainViewModelTests: XCTestCase {
     private var getEventsUseCase = GetEventsUseCaseMock()
     private lazy var dependency = MainViewModel.Dependency(getEventsUseCase: getEventsUseCase)
    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
-
     func test_init() {
         let vm = createViewModel()
         XCTAssertTrue(getEventsUseCase.callArgs.isEmpty)
@@ -29,7 +21,7 @@ class MainViewModelTests: XCTestCase {
     
     func test_fetch() {
         let vm = createViewModel()
-        let eventResponse = Event.stub()
+        let eventResponse: [Event] = [.stub(), .stub(), .stub()]
         getEventsUseCase.publisher = Result.Publisher(eventResponse).eraseToAnyPublisher()
 
         vm.send(action: .fetch)
@@ -39,7 +31,7 @@ class MainViewModelTests: XCTestCase {
             [
                 .init(
                     type: .events,
-                    cells: [eventResponse[0]]
+                    cells: eventResponse
                 )
             ]
         )

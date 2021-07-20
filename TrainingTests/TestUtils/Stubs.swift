@@ -8,26 +8,50 @@
 import Foundation
 @testable import Training
 
+extension String {
+    static func stub() -> Self {
+        UUID().uuidString
+    }
+}
+
+extension Int {
+    static func stub() -> Self {
+        Int.random(in:100..<999)
+    }
+}
+
+extension Int64 {
+    static func stub() -> Self {
+        Int64(Int.stub())
+    }
+}
+
+extension URL {
+    static func stub() -> Self {
+        URL(string: .stub())!
+    }
+}
+
 extension Event {
     static func stub(
-        id: String = "17189128053",
-        type: String = "PushEvent",
+        id: String = .stub(),
+        type: String = .stub(),
         actor: Actor = .init(
-            id: 41898282,
-            login: "github-actions[bot]",
-            displayLogin: "github-actions",
-            avatarUrl: URL(string: "https://avatars.githubusercontent.com/u/41898282?")!),
+            id: .stub(),
+            login: .stub(),
+            displayLogin: .stub(),
+            avatarUrl: .stub()),
         repo: RepositorySummary = .init(
-            id: 307825586,
-            name: "carmilea/carmilea",
-            url:URL(string: "https://api.github.com/repos/carmilea/carmilea")!)
-    ) -> [Self] {
-        [.init(
+            id: .stub(),
+            name: .stub(),
+            url:.stub())
+    ) -> Self {
+        .init(
             id: id,
             type: type,
             actor: actor,
             repo: repo
-        )]
+        )
     }
 }
 

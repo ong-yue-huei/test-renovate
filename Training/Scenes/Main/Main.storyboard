@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" name="Background"/>
                                 <color key="separatorColor" name="ControlHilight"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="TpR-z8-lh3"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="N8Y-wP-YIq"/>
                                 </connections>
                             </tableView>
                         </subviews>

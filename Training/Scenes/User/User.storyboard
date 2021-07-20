@@ -156,7 +156,7 @@
                                     </connections>
                                 </view>
                                 <connections>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="CaE-0N-hY2"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Ceb-LR-vs0"/>
                                 </connections>
                             </tableView>
                         </subviews>

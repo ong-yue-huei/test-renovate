@@ -1,5 +1,5 @@
 //
-//  RepositoryOtherView.swift
+//  RepositoryDataView.swift
 //  Training
 //
 //  Created by Ong Yue Huei on 09/07/2021.
@@ -8,9 +8,9 @@
 import UIKit
 
 @IBDesignable
-final class RepositoryOtherView: UIView {
+final class RepositoryDataView: UIView {
 
-    enum Other {
+    enum Data {
         case isPrivate(_ isPrivate: Bool)
         case language(_ language: String?)
         case issue(_ issue: Int)
@@ -32,7 +32,7 @@ final class RepositoryOtherView: UIView {
             }
         }
         
-        var icon: UIImage {
+        var iconImage: UIImage {
             switch self {
             case .isPrivate: return R.image.private()!
             case .language: return R.image.language()!
@@ -42,8 +42,8 @@ final class RepositoryOtherView: UIView {
         }
     }
     
-    @IBOutlet private var icon: UIImageView!
-    @IBOutlet private var iconInfo: UILabel!
+    @IBOutlet private var iconImageView: UIImageView!
+    @IBOutlet private var iconInfoLabel: UILabel!
     
     override init(frame: CGRect) {
          super.init(frame: frame)
@@ -56,8 +56,8 @@ final class RepositoryOtherView: UIView {
      }
     
     private func setup() {
-        guard let view = R.nib.repositoryOtherView.instantiate(withOwner: self).first as? UIView else {
-            fatalError("Fail to load OtherView from Nib.")
+        guard let view = R.nib.repositoryDataView.instantiate(withOwner: self).first as? UIView else {
+            fatalError("Fail to load DataView from Nib.")
         }
         view.frame = bounds
         view.layer.borderColor = R.color.controlHilight()!.cgColor
@@ -65,9 +65,9 @@ final class RepositoryOtherView: UIView {
         addSubview(view)
     }
     
-    func setInfo(type this: Other) {
-        iconInfo.text = this.info
-        icon.image = this.icon
+    func setInfo(type this: Data) {
+        iconInfoLabel.text = this.info
+        iconImageView.image = this.iconImage
     }
 }
 

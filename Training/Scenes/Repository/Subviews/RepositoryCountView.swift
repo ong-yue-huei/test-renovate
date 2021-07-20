@@ -15,7 +15,7 @@ final class RepositoryCountView: UIView {
         case watchers = "Watchers"
         case forks = "Forks"
 
-        var icon: UIImage {
+        var iconImage: UIImage {
             switch self {
             case .stargazers: return R.image.star()!
             case .watchers: return R.image.watch()!
@@ -24,9 +24,9 @@ final class RepositoryCountView: UIView {
         }
     }
     
-    @IBOutlet private var icon: UIImageView!
-    @IBOutlet private var count: UILabel!
-    @IBOutlet private var iconName: UILabel!
+    @IBOutlet private var iconImageView: UIImageView!
+    @IBOutlet private var countLabel: UILabel!
+    @IBOutlet private var iconNameLabel: UILabel!
     
     override init(frame: CGRect) {
          super.init(frame: frame)
@@ -54,8 +54,8 @@ final class RepositoryCountView: UIView {
     }
     
     func setInfo(type this: Count, count: Int) {
-        icon.image = this.icon
-        iconName.text = this.rawValue
-        self.count.text = String(count)
+        iconImageView.image = this.iconImage
+        iconNameLabel.text = this.rawValue
+        self.countLabel.text = String(count)
     }
 }
