@@ -10,7 +10,7 @@ import Combine
 
 final class GetEventsUseCaseMock: GetEventsUseCase {
     enum CallArg: Equatable {
-        case perform(page: Int?)
+        case perform(page: Int)
     }
     
     var publisher: AnyPublisher<[Event], Error> = Empty().eraseToAnyPublisher()
