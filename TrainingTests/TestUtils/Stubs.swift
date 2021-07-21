@@ -98,3 +98,23 @@ extension Repo {
         )
     }
 }
+
+extension User {
+    static func stub(
+        id: Int64 = .stub(),
+        login: String = .stub(),
+        avatarUrl: URL = .stub(),
+        name: String? = .stub(),
+        followers: Int = .stub(),
+        following: Int = .stub()
+    ) -> Self {
+        .init(
+            id: id,
+            login: login,
+            avatarUrl: avatarUrl,
+            name: name,
+            followers: followers,
+            following: following
+        )
+    }
+}
