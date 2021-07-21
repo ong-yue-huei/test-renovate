@@ -28,7 +28,7 @@ extension Int64 {
 
 extension URL {
     static func stub() -> Self {
-        URL(string: .stub())!
+        URL(string: "https://www.google.com/search?q=\(UUID().uuidString)")!
     }
 }
 
@@ -54,4 +54,3 @@ extension Event {
         )
     }
 }
-
